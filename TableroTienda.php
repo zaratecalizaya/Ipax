@@ -2,29 +2,11 @@
 <html lang="en">
 
 <head>
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!--favicon-->
-	<link rel="icon" href="paginas/assets/images/favicon-32x32.png" type="image/png" />
-	<!--plugins-->
-	<link href="paginas/assets/plugins/OwlCarousel/css/owl.carousel.min.css" rel="stylesheet" />
-	<link href="paginas/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
-	<link href="paginas/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
-	<link href="paginas/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
-	<link href="paginas/assets/plugins/nouislider/nouislider.min.css" rel="stylesheet" />
-	<!-- loader-->
-	<link href="paginas/assets/css/pace.min.css" rel="stylesheet" />
-	<script src="paginas/assets/js/pace.min.js"></script>
-	<!-- Bootstrap CSS -->
-	<link href="paginas/assets/css/bootstrap.min.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-	<link href="paginas/assets/css/app.css" rel="stylesheet">
-	<link href="paginas/assets/css/icons.css" rel="stylesheet">
+	<?php include('./views/layouts/links.php') ?>
 	<title>TableroTienda</title>
 </head>
 
-<body class="bg-theme bg-theme1">	<b class="screen-overlay"></b>
+<body class="bg-theme bg-theme1"> <b class="screen-overlay"></b>
 	<!--wrapper-->
 	<div class="wrapper">
 		<!--start top header wrapper-->
@@ -33,7 +15,7 @@
 				<div class="container">
 					<nav class="navbar navbar-expand">
 						<div class="shiping-title text-uppercase font-13 text-white d-none d-sm-flex">Bienvenido a IpaxStore!</div>
-						
+
 					</nav>
 				</div>
 			</div>
@@ -54,7 +36,7 @@
 						<div class="col-12 col-md order-4 order-md-2">
 							<div class="input-group flex-nowrap px-xl-4">
 								<input type="text" class="form-control w-100" placeholder="Search for Products">
-								 <span class="input-group-text cursor-pointer"><i class='bx bx-search'></i></span>
+								<span class="input-group-text cursor-pointer"><i class='bx bx-search'></i></span>
 							</div>
 						</div>
 						<div class="col col-md-auto order-3 d-none d-xl-flex align-items-center">
@@ -71,7 +53,7 @@
 									<ul class="navbar-nav ms-auto">
 										<li class="nav-item"><a href="javascript:;" class="nav-link cart-link"><i class='bx bx-user'></i>Nombre de Usuario Logueado</a>
 										</li>
-										
+
 										<li class="nav-item dropdown dropdown-large">
 											<a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative cart-link" data-bs-toggle="dropdown"> <span class="alert-count">8</span>
 												<i class='bx bx-shopping-bag'></i>
@@ -99,7 +81,7 @@
 															</div>
 														</div>
 													</a>
-													
+
 												</div>
 												<a href="javascript:;">
 													<div class="text-center cart-footer d-flex align-items-center">
@@ -127,7 +109,7 @@
 							<h5 class="py-2 text-white">Navigation</h5>
 						</div>
 						<ul class="navbar-nav">
-						<li class="nav-item active"> <a class="nav-link" href="TableroTienda.php">Home </a> 
+							<li class="nav-item active"> <a class="nav-link" href="TableroTienda.php">Home </a>
 							</li>
 							<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">CATEGORIAS <i class='bx bx-chevron-down'></i></a>
 								<div class="dropdown-menu dropdown-large-menu">
@@ -138,27 +120,27 @@
 
 
 
-											<?php 
-                                           require_once 'Controlador/CategoriaController.php';
-  
-                    
-                                            $categorias = new ControladorCategoria();
-                                            $list=  $categorias -> ctrListarNombre();
-                            
-				                        	while (count($list)>0){
-					                       	$categoria = array_shift($list);
-						                    $Did= array_shift($categoria);
-						                    $Dnombre= array_shift($categoria);
-						                    echo"<li><a href='javascript:;'>$Dnombre </a>
+												<?php
+												require_once 'Controlador/CategoriaController.php';
+
+
+												$categorias = new ControladorCategoria();
+												$list =  $categorias->ctrListarNombre();
+
+												while (count($list) > 0) {
+													$categoria = array_shift($list);
+													$Did = array_shift($categoria);
+													$Dnombre = array_shift($categoria);
+													echo "<li><a href='javascript:;'>$Dnombre </a>
 						                    </li>";
-						                        }
-                    
-					                         ?> 
-											
+												}
+
+												?>
+
 											</ul>
 										</div>
 										<!-- end col-3 -->
-									
+
 										<!-- end col-3 -->
 										<div class="col-md-4">
 											<div class="pramotion-banner1">
@@ -171,35 +153,35 @@
 								</div>
 								<!-- dropdown-large.// -->
 							</li>
-							<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">TIENDA  <i class='bx bx-chevron-down'></i></a>
+							<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">TIENDA <i class='bx bx-chevron-down'></i></a>
 								<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="Carrito.php">CARRITO DE COMPRAS</a>
+									<li><a class="dropdown-item" href="Carrito.php">CARRITO DE COMPRAS</a>
 									</li>
 									<li><a class="dropdown-item" href="Categorias.php">CATEGORIA DE LA TIENDA</a>
 									</li>
-									
-									
-								
+
+
+
 								</ul>
 							</li>
-							
-						<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">MI CUENTA  <i class='bx bx-chevron-down'></i></a>
+
+							<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">MI CUENTA <i class='bx bx-chevron-down'></i></a>
 								<ul class="dropdown-menu">
-									
+
 									<li><a class="dropdown-item" href="IniciarSesion.php">INICIAR SESION</a>
 									</li>
 									<li><a class="dropdown-item" href="Registro.php">REGISTRARSE
-									</a>
+										</a>
 									<li><a class="dropdown-item" href="DetalledeUsuario.php">DETALLES DE USUARIO</a>
 									</li>
-									</li>
-									<li><a class="dropdown-item" href="ReestablecerContraseña.php">HAS OLVIDADO TU CONTRASEÑ<A></A></a>
-									</li>
-									
-									<li><a class="dropdown-item" href="account-downloads.html">CERRAR SESION</a>
-									</li>
-								</ul>
 							</li>
+							<li><a class="dropdown-item" href="ReestablecerContraseña.php">HAS OLVIDADO TU CONTRASEÑ<A></A></a>
+							</li>
+
+							<li><a class="dropdown-item" href="account-downloads.html">CERRAR SESION</a>
+							</li>
+						</ul>
+						</li>
 						</ul>
 					</nav>
 				</div>
@@ -221,7 +203,7 @@
 										</li>
 										<li class="breadcrumb-item"><a href="javascript:;">Tienda</a>
 										</li>
-										
+
 									</ol>
 								</nav>
 							</div>
@@ -247,31 +229,29 @@
 											<div class="product-categories">
 												<h6 class="text-uppercase mb-3">CATEGORIAS</h6>
 												<ul class="list-unstyled mb-0 categories-list">
-												<?php 
-                    require_once 'Controlador/CategoriaController.php';
-  
-                  
-                    $categorias = new ControladorCategoria();
-                    $list=  $categorias -> ctrListarNombre();
-                            
-					while (count($list)>0){
-						$categoria = array_shift($list);
-						$Did= array_shift($categoria);
-						$Dnombre= array_shift($categoria);
-						echo"<li><a href='javascript:;'>$Dnombre </a>
+													<?php
+													require_once 'Controlador/CategoriaController.php';
+
+
+													$categorias = new ControladorCategoria();
+													$list =  $categorias->ctrListarNombre();
+
+													while (count($list) > 0) {
+														$categoria = array_shift($list);
+														$Did = array_shift($categoria);
+														$Dnombre = array_shift($categoria);
+														echo "<li><a href='javascript:;'>$Dnombre </a>
 						</li>";
-						
-					
-					}
-                    
-					?> 
+													}
+
+													?>
 
 
-													
+
 												</ul>
 											</div>
-											
-										
+
+
 										</div>
 									</div>
 								</div>
@@ -302,23 +282,23 @@
 									</div>
 									<div class="product-grid">
 										<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3">
-											
 
-                                <?php    
-							   
-							   require_once 'Controlador/CategoriaController.php';
-  
-                  
-							   $categorias = new ControladorCategoria();
-                                $list=$categorias->	ctrListarseguncategoria();  
-							   while( count($list)>0){
-								$producto = array_shift($list);
-                                $pid = array_shift($producto);  
-                                $pnombre = array_shift($producto);  
-								$pimagen = array_shift($producto);
-								$pprecio = array_shift($producto);
-								$pcategoria = array_shift($producto);
-                                 echo "
+
+											<?php
+
+											require_once 'Controlador/CategoriaController.php';
+
+
+											$categorias = new ControladorCategoria();
+											$list = $categorias->ctrListarseguncategoria();
+											while (count($list) > 0) {
+												$producto = array_shift($list);
+												$pid = array_shift($producto);
+												$pnombre = array_shift($producto);
+												$pimagen = array_shift($producto);
+												$pprecio = array_shift($producto);
+												$pcategoria = array_shift($producto);
+												echo "
 								 <div class='col'>
 								<div class='card rounded-0 product-card'>
 								<div class='card-header bg-transparent border-bottom-0'>
@@ -331,24 +311,24 @@
 										</a>
 									</div>
 								</div>
-								<img src=".$pimagen." class='card-img-top' alt='...'width='200px' height='200px'>
+								<img src=" . $pimagen . " class='card-img-top' alt='...'width='200px' height='200px'>
 								<div class='card-body'>
 									<div class='product-info'>
 										<a href='javascript:;'>
-											<p class='product-catergory font-13 mb-1'>".$pcategoria."</p>
+											<p class='product-catergory font-13 mb-1'>" . $pcategoria . "</p>
 										</a>
 										<a href='javascript:;'>
-											<h6 class='product-name mb-2'>".$pnombre."</h6>
+											<h6 class='product-name mb-2'>" . $pnombre . "</h6>
 										</a>
 										<div class='d-flex align-items-center'>
 											<div class='mb-1 product-price'>	
-												<span class='text-white fs-5'>".$pprecio."</span>
+												<span class='text-white fs-5'>" . $pprecio . "</span>
 											</div>
 										
 										</div>
 										<div class='product-action mt-2'>
 											<div class='d-grid gap-2'>
-												<a href='javascript:;' class='btn btn-light btn-ecomm'>	<i class='bx bxs-cart-add'></i>AÑADIR AL CARRITO</a> <button type='button' href='javascript:;'onclick='obtenerImagen(".$pid.")' class='btn btn-light btn-ecomm' data-bs-toggle='modal' data-bs-target='#modalP'><i class='bx bx-zoom-in'></i>VISTA RAPIDA</button>	
+												<a href='javascript:;' class='btn btn-light btn-ecomm'>	<i class='bx bxs-cart-add'></i>AÑADIR AL CARRITO</a> <button type='button' href='javascript:;'onclick='obtenerImagen(" . $pid . ")' class='btn btn-light btn-ecomm' data-bs-toggle='modal' data-bs-target='#modalP'><i class='bx bx-zoom-in'></i>VISTA RAPIDA</button>	
 											</div>
 										</div>
 									</div>
@@ -356,19 +336,15 @@
 							   </div>
 
 							   </div>";
+											}
 
 
-							   }
+											if (count($list) == 0) {
+												echo "aun falta rellenar datos...!";
+											}
 
+											?>
 
-							   if(count($list)==0){
-								   echo "aun falta rellenar datos...!";
-								 
-
-							   }
-							 
-							 ?>
-													
 										</div>
 										<!--end row-->
 									</div>
@@ -484,20 +460,20 @@
 								<h6 class="mb-3 text-uppercase">MANTENTE INFORMADO</h6>
 								<div class="subscribe">
 									<input type="text" class="form-control radius-30" placeholder="Introduce tu correo electronico" />
-									<div class="mt-2 d-grid">	<a href="Registro.php" class="btn btn-white btn-ecomm radius-30">Registrate</a>
+									<div class="mt-2 d-grid"> <a href="Registro.php" class="btn btn-white btn-ecomm radius-30">Registrate</a>
 									</div>
 									<p class="mt-2 mb-0 font-13">Registrate para recibir actualizaciones e informacion sobre nuevos productos</p>
 								</div>
-															</div>
+							</div>
 						</div>
 					</div>
 					<!--end row-->
-					<hr/>
+					<hr />
 					<div class="row row-cols-1 row-cols-md-2 align-items-center">
 						<div class="col">
 							<p class="mb-0">Copyright IPAXSTUDIO © 2021. All right reserved.</p>
 						</div>
-							</div>
+					</div>
 					<!--end row-->
 				</div>
 			</section>
@@ -514,19 +490,19 @@
 							<div class="col-12 col-lg-6">
 								<div class="image-zoom-section">
 									<div class="product-gallery owl-carousel owl-theme border mb-3 p-3" data-slider-id="1">
-										
+
 										<div class="item">
-											<img id="myImage" name="myImage" src=""  alt="aqui viene una imag">
+											<img id="myImage" name="myImage" src="" alt="aqui viene una imag">
 										</div>
 									</div>
-									
+
 								</div>
 							</div>
 							<div class="col-12 col-lg-6">
 								<div class="product-info-section p-3">
 									<h3 class="mt-3 mt-lg-0 mb-0">Allen Solly Men's Polo T-Shirt</h3>
 									<div class="product-rating d-flex align-items-center mt-2">
-										
+
 									</div>
 									<div class="d-flex align-items-center mt-3 gap-2">
 										<h5 class="mb-0 text-decoration-line-through text-light-3">$98.00</h5>
@@ -536,8 +512,10 @@
 										<h6>Discription :</h6>
 										<p class="mb-0">Virgil Abloh’s Off-White is a streetwear-inspired collection that continues to break away from the conventions of mainstream fashion. Made in Italy, these black and brown Odsy-1000 low-top sneakers.</p>
 									</div>
-									<dl class="row mt-3">	<dt class="col-sm-3">Product id</dt>
-										<dd class="col-sm-9">#BHU5879</dd>	<dt class="col-sm-3">Delivery</dt>
+									<dl class="row mt-3">
+										<dt class="col-sm-3">Product id</dt>
+										<dd class="col-sm-9">#BHU5879</dd>
+										<dt class="col-sm-3">Delivery</dt>
 										<dd class="col-sm-9">Russia, USA, and Europe</dd>
 									</dl>
 									<div class="row row-cols-auto align-items-center mt-3">
@@ -554,7 +532,7 @@
 									</div>
 									<!--end row-->
 									<div class="d-flex gap-2 mt-3">
-										<a href="javascript:;" class="btn btn-white btn-ecomm">	<i class="bx bxs-cart-add"></i>Añadir A Carrito</a>	
+										<a href="javascript:;" class="btn btn-white btn-ecomm"> <i class="bx bxs-cart-add"></i>Añadir A Carrito</a>
 									</div>
 								</div>
 							</div>
@@ -579,44 +557,28 @@
 
 	</script>
 	<script>
+		function obtenerImagen(idp) {
+			var parametros = {
+				"id": idp
+			};
+			//document.getElementById("myImage").src="ImagenP/modelorealidadaumentada2.png";
+			$.ajax({
+				type: "POST",
+				url: "tarjetaimagen.php",
+				data: parametros,
+				success: function(respuesta) {
+					//window.location.href = window.location.href;
+					console.log(respuesta);
+					//document.getElementsByTagName(myImage).src=respuesta;
+					document.getElementById("myImage").src = respuesta;
+					//$("#myImage").attr("src",respuesta);
 
-
-  function obtenerImagen(idp){
-      var parametros = {
-                "id" : idp,
-              
-        };
-		//document.getElementById("myImage").src="ImagenP/modelorealidadaumentada2.png";
-        $.ajax({
-        type: "POST",
-        url: "tarjetaimagen.php",
-        data: parametros,
-        success:function(respuesta ) {
-          //window.location.href = window.location.href;
-          console.log(respuesta);
-		//document.getElementsByTagName(myImage).src=respuesta;
-             document.getElementById("myImage").src=respuesta;  
-			 //$("#myImage").attr("src",respuesta);
-
-        }
-       });  }
-
+				}
+			});
+		}
 	</script>
-	
-	<!--end switcher-->
-	<!-- Bootstrap JS -->
-	<script src="paginas/assets/js/bootstrap.bundle.min.js"></script>
-	<!--plugins-->
-	<script src="paginas/assets/js/jquery.min.js"></script>
-	<script src="paginas/assets/plugins/simplebar/js/simplebar.min.js"></script>
-	<script src="paginas/assets/plugins/OwlCarousel/js/owl.carousel.min.js"></script>
-	<script src="paginas/assets/plugins/OwlCarousel/js/owl.carousel2.thumbs.min.js"></script>
-	<script src="paginas/assets/plugins/metismenu/js/metisMenu.min.js"></script>
-	<script src="paginas/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-	<script src="paginas/assets/plugins/nouislider/nouislider.min.js"></script>
-	<script src="paginas/assets/js/product-gallery.js"></script>
-	<!--app JS-->
-	<script src="paginas/assets/js/app.js"></script>
+	<!-- scripts -->
+	<?php include('./views/layouts/scripts.php') ?>
 </body>
 
 </html>

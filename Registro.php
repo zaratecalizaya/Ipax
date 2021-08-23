@@ -2,38 +2,20 @@
 <html lang="en">
 
 <head>
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!--favicon-->
-	<link rel="icon" href="assets/images/favicon-32x32.png" type="image/png" />
-	<!--plugins-->
-	<link href="paginas/assets/plugins/OwlCarousel/css/owl.carousel.min.css" rel="stylesheet" />
-	<link href="paginas/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
-	<link href="paginas/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
-	<link href="paginas/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
-	<link href="paginas/assets/plugins/nouislider/nouislider.min.css" rel="stylesheet" />
-	<!-- loader-->
-	<link href="paginas/assets/css/pace.min.css" rel="stylesheet" />
-	<script src="paginas/assets/js/pace.min.js"></script>
-	<!-- Bootstrap CSS -->
-	<link href="paginas/assets/css/bootstrap.min.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-	<link href="paginas/assets/css/app.css" rel="stylesheet">
-	<link href="paginas/assets/css/icons.css" rel="stylesheet">
+	<?php include('./views/layouts/links.php') ?>
 	<title>eTrans - eCommerce HTML Template</title>
 </head>
 
-<body class="bg-theme bg-theme1">	<b class="screen-overlay"></b>
+<body class="bg-theme bg-theme1"> <b class="screen-overlay"></b>
 	<!--wrapper-->
 	<div class="wrapper">
 		<!--start top header wrapper-->
-        <div class="header-wrapper bg-dark-1">
+		<div class="header-wrapper bg-dark-1">
 			<div class="top-menu border-bottom">
 				<div class="container">
 					<nav class="navbar navbar-expand">
 						<div class="shiping-title text-uppercase font-13 text-white d-none d-sm-flex">Bienvenido a IpaxStore!</div>
-						
+
 					</nav>
 				</div>
 			</div>
@@ -54,7 +36,7 @@
 						<div class="col-12 col-md order-4 order-md-2">
 							<div class="input-group flex-nowrap px-xl-4">
 								<input type="text" class="form-control w-100" placeholder="Search for Products">
-								 <span class="input-group-text cursor-pointer"><i class='bx bx-search'></i></span>
+								<span class="input-group-text cursor-pointer"><i class='bx bx-search'></i></span>
 							</div>
 						</div>
 						<div class="col col-md-auto order-3 d-none d-xl-flex align-items-center">
@@ -100,7 +82,7 @@
 															</div>
 														</div>
 													</a>
-													
+
 												</div>
 												<a href="javascript:;">
 													<div class="text-center cart-footer d-flex align-items-center">
@@ -128,7 +110,7 @@
 							<h5 class="py-2 text-white">Navigation</h5>
 						</div>
 						<ul class="navbar-nav">
-						<li class="nav-item active"> <a class="nav-link" href="TableroTienda.php">Home </a> 
+							<li class="nav-item active"> <a class="nav-link" href="TableroTienda.php">Home </a>
 							</li>
 							<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">CATEGORIAS <i class='bx bx-chevron-down'></i></a>
 								<div class="dropdown-menu dropdown-large-menu">
@@ -188,35 +170,35 @@
 								</div>
 								<!-- dropdown-large.// -->
 							</li>
-							<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">TIENDA  <i class='bx bx-chevron-down'></i></a>
+							<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">TIENDA <i class='bx bx-chevron-down'></i></a>
 								<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="Carrito.php">CARRITO DE COMPRAS</a>
+									<li><a class="dropdown-item" href="Carrito.php">CARRITO DE COMPRAS</a>
 									</li>
 									<li><a class="dropdown-item" href="Categorias.php">CATEGORIA DE LA TIENDA</a>
 									</li>
-									
-									
-								
+
+
+
 								</ul>
 							</li>
-							
-						<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">MI CUENTA  <i class='bx bx-chevron-down'></i></a>
+
+							<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">MI CUENTA <i class='bx bx-chevron-down'></i></a>
 								<ul class="dropdown-menu">
-									
+
 									<li><a class="dropdown-item" href="IniciarSesion.php">INICIAR SESION</a>
 									</li>
 									<li><a class="dropdown-item" href="Registro.php">REGISTRARSE
-									</a>
+										</a>
 									<li><a class="dropdown-item" href="DetalledeUsuario.php">DETALLES DE USUARIO</a>
 									</li>
-									</li>
-									<li><a class="dropdown-item" href="ReestablecerContraseña.php">HAS OLVIDADO TU CONTRASEÑ<A></A></a>
-									</li>
-									
-									<li><a class="dropdown-item" href="account-downloads.html">CERRAR SESION</a>
-									</li>
-								</ul>
 							</li>
+							<li><a class="dropdown-item" href="ReestablecerContraseña.php">HAS OLVIDADO TU CONTRASEÑ<A></A></a>
+							</li>
+
+							<li><a class="dropdown-item" href="account-downloads.html">CERRAR SESION</a>
+							</li>
+						</ul>
+						</li>
 						</ul>
 					</nav>
 				</div>
@@ -257,19 +239,19 @@
 											<div class="py-4">
 												<div class="text-center">
 													<h3 class="">Registro</h3>
-													
+
 												</div>
-												
-												<div class="login-separater text-center mb-4"> 
+
+												<div class="login-separater text-center mb-4">
 												</div>
 												<div class="form-body">
 													<form class="row g-3">
 														<div class="col-sm-6">
-														<input type="hidden" class="form-control" id="id" name="id" value="0">
-															
-														
-														<label for="inputFirstName" class="form-label">Nombre</label>
-														<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Jhon">
+															<input type="hidden" class="form-control" id="id" name="id" value="0">
+
+
+															<label for="inputFirstName" class="form-label">Nombre</label>
+															<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Jhon">
 														</div>
 														<div class="col-sm-6">
 															<label for="inputLastName" class="form-label">Apellido</label>
@@ -277,18 +259,18 @@
 														</div>
 
 														<div class="col-sm-6">
-													
+
 															<label for="inputLastName" class="form-label">Fecha de Nacimiento</label>
-															
-												            <input type="date" class="form-control" id="fechaNac" name="fechaNac"  data-inputmask-inputformat="yyyy/mm/dd" data-mask >
-												
+
+															<input type="date" class="form-control" id="fechaNac" name="fechaNac" data-inputmask-inputformat="yyyy/mm/dd" data-mask>
+
 														</div>
 														<div class="col-sm-6">
 															<label for="inputLastName" class="form-label">Telefono</label>
 															<input type="text" class="form-control" id="telf" name="telf" placeholder="+591 ">
 														</div>
-                             
-													
+
+
 														<div class="col-12">
 															<label for="inputEmailAddress" class="form-label">Direccion de Correo Electronico</label>
 															<input type="email" class="form-control" id="email" name="email" placeholder="example@user.com">
@@ -299,50 +281,47 @@
 																<option selected>Seleccione Genero</option>
 																<option value="1">Femenino</option>
 																<option value="2">Masculino</option>
-																
+
 															</select>
 														</div>
 
 														<div class="col-12">
 															<label for="inputEmailAddress" class="form-label">Usuario</label>
-															<input type="text" class="form-control" id="usuario" name="usuario" placeholder="Jhon12" >
+															<input type="text" class="form-control" id="usuario" name="usuario" placeholder="Jhon12">
 														</div>
-                                                              
+
 														<div class="col-12">
 															<label for="inputChoosePassword" class="form-label">Contraseña</label>
 															<div class="input-group" id="show_hide_password">
-																<input type="password" class="form-control border-end-0" id="pass" nombre="pass"  placeholder="Enter Password"> <a href="javascript:;" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
+																<input type="password" class="form-control border-end-0" id="pass" nombre="pass" placeholder="Enter Password"> <a href="javascript:;" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
 															</div>
 														</div>
-                                                        <div class="col-12">
+														<div class="col-12">
 															<label for="inputChoosePassword" class="form-label">Contraseña</label>
 															<div class="input-group" id="show_hide_password">
-																<input type="password" class="form-control border-end-0" id="pass2" nombre="pass2"  placeholder="confirmar contraseña"> <a href="javascript:;" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
+																<input type="password" class="form-control border-end-0" id="pass2" nombre="pass2" placeholder="confirmar contraseña"> <a href="javascript:;" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
 															</div>
 														</div>
-														
+
 														<div class="col-12">
 															<div class="d-grid">
-                                                            <?php
-															require_once 'Controlador/UsuarioController.php';
-                                                            $user= new ControladorUsuario();
-															$resp = $user->ctrRegistroUsuario();
-															
-															//echo "<script> alert(' respuesta: ".$resp." ')</script>";
-															if ($resp=="true"){
-															  //echo "<script> alert(' respuesta: ".$resp." ')</script>";
-															   echo "<meta http-equiv='refresh' content='0'>";
-															}elseif($resp=="false"){
-															  //echo "<script> alert(' respuesta: al parecer fue falso XD')</script>";
-															}else{
-															  echo "<script> alert(' respuesta: ".$resp." ')</script>";
-                                                              
+																<?php
+																require_once 'Controlador/UsuarioController.php';
+																$user = new ControladorUsuario();
+																$resp = $user->ctrRegistroUsuario();
 
-															  
-															}
-                                                                                                                                                        
-															?>
-															
+																//echo "<script> alert(' respuesta: ".$resp." ')</script>";
+																if ($resp == "true") {
+																	//echo "<script> alert(' respuesta: ".$resp." ')</script>";
+																	echo "<meta http-equiv='refresh' content='0'>";
+																} elseif ($resp == "false") {
+																	//echo "<script> alert(' respuesta: al parecer fue falso XD')</script>";
+																} else {
+																	echo "<script> alert(' respuesta: " . $resp . " ')</script>";
+																}
+
+																?>
+
 																<button type="submit" class="btn btn-light"><i class='bx bx-user'></i>Registrar</button>
 															</div>
 														</div>
@@ -440,20 +419,20 @@
 								<h6 class="mb-3 text-uppercase">MANTENTE INFORMADO</h6>
 								<div class="subscribe">
 									<input type="text" class="form-control radius-30" placeholder="Introduce tu correo electronico" />
-									<div class="mt-2 d-grid">	<a href="Registro.php" class="btn btn-white btn-ecomm radius-30">Registrate</a>
+									<div class="mt-2 d-grid"> <a href="Registro.php" class="btn btn-white btn-ecomm radius-30">Registrate</a>
 									</div>
 									<p class="mt-2 mb-0 font-13">Registrate para recibir actualizaciones e informacion sobre nuevos productos</p>
 								</div>
-															</div>
+							</div>
 						</div>
 					</div>
 					<!--end row-->
-					<hr/>
+					<hr />
 					<div class="row row-cols-1 row-cols-md-2 align-items-center">
 						<div class="col">
 							<p class="mb-0">Copyright IPAXSTUDIO © 2021. All right reserved.</p>
 						</div>
-							</div>
+					</div>
 					<!--end row-->
 				</div>
 			</section>
@@ -464,19 +443,10 @@
 	</div>
 	<!--end wrapper-->
 	<!--start switcher-->
-	
+
 	<!--end switcher-->
-	<!-- Bootstrap JS -->
-	<script src="paginas/assets/js/bootstrap.bundle.min.js"></script>
-	<!--plugins-->
-	<script src="paginas/assets/js/jquery.min.js"></script>
-	<script src="paginas/assets/plugins/simplebar/js/simplebar.min.js"></script>
-	<script src="paginas/assets/plugins/OwlCarousel/js/owl.carousel.min.js"></script>
-	<script src="paginas/assets/plugins/OwlCarousel/js/owl.carousel2.thumbs.min.js"></script>
-	<script src="paginas/assets/plugins/metismenu/js/metisMenu.min.js"></script>
-	<script src="paginas/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-	<!--app JS-->
-	<script src="paginas/assets/js/app.js"></script>
+
+	<?php include('./views/layouts/scripts.php') ?>
 	<!--Password show & hide js -->
 	<script src="paginas/assets/js/show-hide-password.js"></script>
 </body>

@@ -3,28 +3,11 @@
 
 <head>
 	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!--favicon-->
-	<link rel="icon" href="Paginas/assets/images/favicon-32x32.png" type="image/png" />
-	<!--plugins-->
-	<link href="Paginas/assets/plugins/OwlCarousel/css/owl.carousel.min.css" rel="stylesheet" />
-	<link href="Paginas/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
-	<link href="Paginas/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
-	<link href="Paginas/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
-	<link href="Paginas/assets/plugins/nouislider/nouislider.min.css" rel="stylesheet" />
-	<!-- loader-->
-	<link href="Paginas/assets/css/pace.min.css" rel="stylesheet" />
-	<script src="Paginas/assets/js/pace.min.js"></script>
-	<!-- Bootstrap CSS -->
-	<link href="Paginas/assets/css/bootstrap.min.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-	<link href="Paginas/assets/css/app.css" rel="stylesheet">
-	<link href="Paginas/assets/css/icons.css" rel="stylesheet">
+	<?php include('./views/layouts/links.php') ?>
 	<title>eTrans - eCommerce HTML Template</title>
 </head>
 
-<body class="bg-theme bg-theme1">	<b class="screen-overlay"></b>
+<body class="bg-theme bg-theme1"> <b class="screen-overlay"></b>
 	<!--wrapper-->
 	<div class="wrapper">
 		<!--start top header wrapper-->
@@ -33,7 +16,7 @@
 				<div class="container">
 					<nav class="navbar navbar-expand">
 						<div class="shiping-title text-uppercase font-13 text-white d-none d-sm-flex">Bienvenido a IpaxStore!</div>
-						
+
 					</nav>
 				</div>
 			</div>
@@ -54,7 +37,7 @@
 						<div class="col-12 col-md order-4 order-md-2">
 							<div class="input-group flex-nowrap px-xl-4">
 								<input type="text" class="form-control w-100" placeholder="Search for Products">
-								 <span class="input-group-text cursor-pointer"><i class='bx bx-search'></i></span>
+								<span class="input-group-text cursor-pointer"><i class='bx bx-search'></i></span>
 							</div>
 						</div>
 						<div class="col col-md-auto order-3 d-none d-xl-flex align-items-center">
@@ -100,7 +83,7 @@
 															</div>
 														</div>
 													</a>
-													
+
 												</div>
 												<a href="javascript:;">
 													<div class="text-center cart-footer d-flex align-items-center">
@@ -128,7 +111,7 @@
 							<h5 class="py-2 text-white">Navigation</h5>
 						</div>
 						<ul class="navbar-nav">
-						<li class="nav-item active"> <a class="nav-link" href="TableroTienda.php">Home </a> 
+							<li class="nav-item active"> <a class="nav-link" href="TableroTienda.php">Home </a>
 							</li>
 							<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">CATEGORIAS <i class='bx bx-chevron-down'></i></a>
 								<div class="dropdown-menu dropdown-large-menu">
@@ -169,33 +152,33 @@
 							</li>
 							<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">CARRITO DE COMPRAS <i class='bx bx-chevron-down'></i></a>
 								<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="Carrito.php">CARRITO DE COMPRAS</a>
+									<li><a class="dropdown-item" href="Carrito.php">CARRITO DE COMPRAS</a>
 									</li>
 									<li><a class="dropdown-item" href="Categorias.php">CATEGORIA DE LA TIENDA</a>
 									</li>
-									
-									
-								
+
+
+
 								</ul>
 							</li>
-							
-						<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">MI CUENTA  <i class='bx bx-chevron-down'></i></a>
+
+							<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">MI CUENTA <i class='bx bx-chevron-down'></i></a>
 								<ul class="dropdown-menu">
-									
+
 									<li><a class="dropdown-item" href="IniciarSesion.php">INICIAR SESION</a>
 									</li>
 									<li><a class="dropdown-item" href="Registro.php">REGISTRARSE
-									</a>
+										</a>
 									<li><a class="dropdown-item" href="DetalledeUsuario.php">DETALLES DE USUARIO</a>
 									</li>
-									</li>
-									<li><a class="dropdown-item" href="ReestablecerContraseña.php">HAS OLVIDADO TU CONTRASEÑ<A></A></a>
-									</li>
-									
-									<li><a class="dropdown-item" href="account-downloads.html">CERRAR SESION</a>
-									</li>
-								</ul>
 							</li>
+							<li><a class="dropdown-item" href="ReestablecerContraseña.php">HAS OLVIDADO TU CONTRASEÑ<A></A></a>
+							</li>
+
+							<li><a class="dropdown-item" href="account-downloads.html">CERRAR SESION</a>
+							</li>
+						</ul>
+						</li>
 						</ul>
 					</nav>
 				</div>
@@ -231,26 +214,26 @@
 						<div class="product-categories">
 							<div class="row row-cols-1 row-cols-lg-4">
 
-					<?php 
-                    require_once 'Controlador/CategoriaController.php';
-  
-                  
-                    $categorias = new ControladorCategoria();
-                    $list=  $categorias -> ctrListarCategoria(1,1000);
-                            
-					while (count($list)>0){
-						$categoria = array_shift($list);
-						$Did= array_shift($categoria);
-						$Dnombre= array_shift($categoria);
-						$Dimagen= array_shift($categoria);
-						   
-					   
+								<?php
+								require_once 'Controlador/CategoriaController.php';
 
-                       echo"			
+
+								$categorias = new ControladorCategoria();
+								$list =  $categorias->ctrListarCategoria(1, 1000);
+
+								while (count($list) > 0) {
+									$categoria = array_shift($list);
+									$Did = array_shift($categoria);
+									$Dnombre = array_shift($categoria);
+									$Dimagen = array_shift($categoria);
+
+
+
+									echo "			
                            <div class='col'>					
 				        	<div class= 'card rounded-0 product-card' >
 					   <a href=javascript:;>
-						  <img src=".$Dimagen." class= card-img-top border-bottom bg-dark-1 alt='...' width='150px' height='150px' >
+						  <img src=" . $Dimagen . " class= card-img-top border-bottom bg-dark-1 alt='...' width='150px' height='150px' >
 					  </a>
 
 
@@ -263,7 +246,7 @@
 					  <input type='hidden' name='id_categoria' id='id_categoria' value='.$Did.'>
 					  <h6 class= 'mb-0 text-uppercase'>
 				
-					  <input type='submit' name='captura' class='btn btn-light btn-ecomm  bg-transparent d-flex justify-content-between ' onclick='location.href='TableroTienda.php';' value='".$Dnombre."'>
+					  <input type='submit' name='captura' class='btn btn-light btn-ecomm  bg-transparent d-flex justify-content-between ' onclick='location.href='TableroTienda.php';' value='" . $Dnombre . "'>
 				
 					</h6>
 					  
@@ -275,27 +258,22 @@
 										  
 					  </div>
 				    </div>
-				    </div>"
-				  ;
+				    </div>";
+								}
+
+								?>
 
 
 
-
-                      }
-                    
-                   ?> 
-
-							
-								
 							</div>
 							<!--end row-->
 						</div>
 					</div>
-			
+
 				</section>
 				<!--end shop categories-->
 				<!--start brand-->
-				
+
 				<!--end brand-->
 			</div>
 		</div>
@@ -379,20 +357,20 @@
 								<h6 class="mb-3 text-uppercase">MANTENTE INFORMADO</h6>
 								<div class="subscribe">
 									<input type="text" class="form-control radius-30" placeholder="Introduce tu correo electronico" />
-									<div class="mt-2 d-grid">	<a href="Registro.php" class="btn btn-white btn-ecomm radius-30">Registrate</a>
+									<div class="mt-2 d-grid"> <a href="Registro.php" class="btn btn-white btn-ecomm radius-30">Registrate</a>
 									</div>
 									<p class="mt-2 mb-0 font-13">Registrate para recibir actualizaciones e informacion sobre nuevos productos</p>
 								</div>
-															</div>
+							</div>
 						</div>
 					</div>
 					<!--end row-->
-					<hr/>
+					<hr />
 					<div class="row row-cols-1 row-cols-md-2 align-items-center">
 						<div class="col">
 							<p class="mb-0">Copyright IPAXSTUDIO © 2021. All right reserved.</p>
 						</div>
-							</div>
+					</div>
 					<!--end row-->
 				</div>
 			</section>
@@ -404,19 +382,9 @@
 	</div>
 	<!--end wrapper-->
 	<!--start switcher-->
-	
+
 	<!--end switcher-->
-	<!-- Bootstrap JS -->
-	<script src="Paginas/assets/js/bootstrap.bundle.min.js"></script>
-	<!--plugins-->
-	<script src="Paginas/assets/js/jquery.min.js"></script>
-	<script src="Paginas/assets/plugins/simplebar/js/simplebar.min.js"></script>
-	<script src="Paginas/assets/plugins/OwlCarousel/js/owl.carousel.min.js"></script>
-	<script src="Paginas/assets/plugins/OwlCarousel/js/owl.carousel2.thumbs.min.js"></script>
-	<script src="Paginas/assets/plugins/metismenu/js/metisMenu.min.js"></script>
-	<script src="Paginas/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-	<!--app JS-->
-	<script src="Paginas/assets/js/app.js"></script>
+	<?php include('./views/layouts/scripts.php') ?>
 </body>
 
 </html>
