@@ -79,7 +79,7 @@
 											<div class="dropdown-menu dropdown-menu-end">
 												<a href="javascript:;">
 													<div class="cart-header">
-														<p class="cart-header-title mb-0">cONTEO DE ITEMS ÑADIDOS A CARRITO</p>
+														<p class="cart-header-title mb-0">CONTEO DE ITEMS ÑADIDOS A CARRITO</p>
 														<p class="cart-header-clear ms-auto mb-0">VER CARRITO</p>
 													</div>
 												</a>
@@ -129,46 +129,8 @@
 						<ul class="navbar-nav">
 						<li class="nav-item active"> <a class="nav-link" href="TableroTienda.php">Home </a> 
 							</li>
-							<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">CATEGORIAS <i class='bx bx-chevron-down'></i></a>
-								<div class="dropdown-menu dropdown-large-menu">
-									<div class="row">
-										<div class="col-md-4">
-											<h6 class="large-menu-title">Fashion</h6>
-											<ul class="">
-
-
-
-											<?php 
-                                           require_once 'Controlador/CategoriaController.php';
-  
-                    
-                                            $categorias = new ControladorCategoria();
-                                            $list=  $categorias -> ctrListarNombre();
-                            
-				                        	while (count($list)>0){
-					                       	$categoria = array_shift($list);
-						                    $Did= array_shift($categoria);
-						                    $Dnombre= array_shift($categoria);
-						                    echo"<li><a href='javascript:;'>$Dnombre </a>
-						                    </li>";
-						                        }
-                    
-					                         ?> 
-											
-											</ul>
-										</div>
-										<!-- end col-3 -->
-									
-										<!-- end col-3 -->
-										<div class="col-md-4">
-											<div class="pramotion-banner1">
-												<img src="ImagenC/ipax.jpg" class="img-fluid" alt="">
-											</div>
-										</div>
-										<!-- end col-3 -->
-									</div>
-									<!-- end row -->
-								</div>
+							<li class="nav-item active"> <a class="nav-link " href="Categorias.php" >CATEGORIAS </a>
+								
 								<!-- dropdown-large.// -->
 							</li>
 							<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">TIENDA  <i class='bx bx-chevron-down'></i></a>
@@ -315,6 +277,7 @@
 								$producto = array_shift($list);
                                 $pid = array_shift($producto);  
                                 $pnombre = array_shift($producto);  
+								$pdescripcion = array_shift($producto);  
 								$pimagen = array_shift($producto);
 								$pprecio = array_shift($producto);
 								$pcategoria = array_shift($producto);
@@ -342,13 +305,29 @@
 										</a>
 										<div class='d-flex align-items-center'>
 											<div class='mb-1 product-price'>	
-												<span class='text-white fs-5'>".$pprecio."</span>
+												<span class='text-white fs-5'>Bs ".$pprecio."</span>
 											</div>
 										
 										</div>
 										<div class='product-action mt-2'>
 											<div class='d-grid gap-2'>
-												<a href='javascript:;' class='btn btn-light btn-ecomm'>	<i class='bx bxs-cart-add'></i>AÑADIR AL CARRITO</a> <button type='button' href='javascript:;'onclick='obtenerImagen(".$pid.")' class='btn btn-light btn-ecomm' data-bs-toggle='modal' data-bs-target='#modalP'><i class='bx bx-zoom-in'></i>VISTA RAPIDA</button>	
+
+                                             
+							   <form action='' method='post'>
+							   <input type='text' name ='idproducto' id='idproducto'value='".$pid."'>
+							   <input type='text' name='nombre' id='nombre' value='".$pnombre."'>
+							   <input type='text' name='descripcion' id='descripcion' value='".$pdescripcion."'>
+							   <input type='text' name='imagen' id='imagen' value='".$pimagen."'>
+							   <input type='text' name='precio' id='precio' value='".$pprecio."'>
+							   <input type='text' name='categoria' id='categoria' value='".$pcategoria."'>
+							   <button  class='btn btn-light btn-ecomm' name='btnAccion' value='Agregar' type='submit'><i class='bx bxs-cart-add'></i>AÑADIR AL CARRITO</button>	
+								 
+								 
+								 </form>
+
+
+
+												<a href='javascript:;' class='btn btn-light btn-ecomm'>	<i class='bx bxs-cart-add'></i>AÑADIR AL CARRITO</a> <button type='button' href='javascript:;'onclick='CargaDatos(".$pid.")' class='btn btn-light btn-ecomm' data-bs-toggle='modal' data-bs-target='#modalP'><i class='bx bx-zoom-in'></i>VISTA RAPIDA</button>	
 											</div>
 										</div>
 									</div>
@@ -359,6 +338,7 @@
 
 
 							   }
+                       
 
 
 							   if(count($list)==0){
@@ -513,33 +493,30 @@
 						<div class="row g-0">
 							<div class="col-12 col-lg-6">
 								<div class="image-zoom-section">
-									<div class="product-gallery owl-carousel owl-theme border mb-3 p-3" data-slider-id="1">
+									
 										
-										<div class="item">
-											<img id="myImage" name="myImage" src=""  alt="aqui viene una imag">
-										</div>
-									</div>
+										
+											<img id="myImage" name="myImage" src=""  alt="aqui viene una imag" width='530' height='450'>
+										
+									
 									
 								</div>
 							</div>
 							<div class="col-12 col-lg-6">
 								<div class="product-info-section p-3">
-									<h3 class="mt-3 mt-lg-0 mb-0">Allen Solly Men's Polo T-Shirt</h3>
+									<h3 class="mt-3 mt-lg-0 mb-0" id="hNombre"></h3>
 									<div class="product-rating d-flex align-items-center mt-2">
 										
 									</div>
 									<div class="d-flex align-items-center mt-3 gap-2">
-										<h5 class="mb-0 text-decoration-line-through text-light-3">$98.00</h5>
-										<h4 class="mb-0">$49.00</h4>
+										
+										<h4 class="mb-0" id="hPrecio"></h4>
 									</div>
 									<div class="mt-3">
 										<h6>Discription :</h6>
-										<p class="mb-0">Virgil Abloh’s Off-White is a streetwear-inspired collection that continues to break away from the conventions of mainstream fashion. Made in Italy, these black and brown Odsy-1000 low-top sneakers.</p>
+										<p class="mb-0" id="hDescripcion"></p>
 									</div>
-									<dl class="row mt-3">	<dt class="col-sm-3">Product id</dt>
-										<dd class="col-sm-9">#BHU5879</dd>	<dt class="col-sm-3">Delivery</dt>
-										<dd class="col-sm-9">Russia, USA, and Europe</dd>
-									</dl>
+									
 									<div class="row row-cols-auto align-items-center mt-3">
 										<div class="col">
 											<label class="form-label">cantidad</label>
@@ -581,6 +558,9 @@
 	<script>
 
 
+
+
+
   function obtenerImagen(idp){
       var parametros = {
                 "id" : idp,
@@ -594,12 +574,84 @@
         success:function(respuesta ) {
           //window.location.href = window.location.href;
           console.log(respuesta);
-		//document.getElementsByTagName(myImage).src=respuesta;
+		  //document.getElementsByTagName(myImage).src=respuesta;
              document.getElementById("myImage").src=respuesta;  
 			 //$("#myImage").attr("src",respuesta);
 
         }
-       });  }
+       });  
+	   }
+       
+	   function obtenerPrecio(idp){
+      var parametros = {
+                "id" : idp,
+              
+        };
+		//document.getElementById("myImage").src="ImagenP/modelorealidadaumentada2.png";
+        $.ajax({
+        type: "POST",
+        url: "tarjetaprecio.php",
+        data: parametros,
+        success:function(respuesta ) {
+          //window.location.href = window.location.href;
+          console.log(respuesta);
+		  //document.getElementsByTagName(myImage).src=respuesta;
+		  document.getElementById("hPrecio").innerHTML ="Bs"+respuesta;  
+			 //$("#myImage").attr("src",respuesta);
+
+        }
+       });  
+	   }
+         
+	   function obtenerNombre(idp){
+      var parametros = {
+                "id" : idp,
+              
+        };
+		//document.getElementById("myImage").src="ImagenP/modelorealidadaumentada2.png";
+        $.ajax({
+        type: "POST",
+        url: "tarjetanombre.php",
+        data: parametros,
+        success:function(respuesta ) {
+          //window.location.href = window.location.href;
+          console.log(respuesta);
+		  //document.getElementsByTagName(myImage).src=respuesta;
+		  document.getElementById("hNombre").innerHTML =respuesta;  
+			 //$("#myImage").attr("src",respuesta);
+
+        }
+       });  
+	   }
+
+	   function obtenerDescripcion(idp){
+      var parametros = {
+                "id" : idp,
+              
+        };
+		//document.getElementById("myImage").src="ImagenP/modelorealidadaumentada2.png";
+        $.ajax({
+        type: "POST",
+        url: "tarjetadescripcion.php",
+        data: parametros,
+        success:function(respuesta ) {
+          //window.location.href = window.location.href;
+          console.log(respuesta);
+		  //document.getElementsByTagName(myImage).src=respuesta;
+		  document.getElementById("hDescripcion").innerHTML =respuesta;   
+			 //$("#myImage").attr("src",respuesta);
+
+        }
+       });  
+	   }
+  
+
+  function CargaDatos(idp){
+	  obtenerDescripcion(idp);
+	  obtenerImagen(idp);
+	  obtenerPrecio(idp);
+	  obtenerNombre(idp);
+  }
 
 	</script>
 	

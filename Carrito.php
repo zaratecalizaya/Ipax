@@ -130,62 +130,8 @@
 						<ul class="navbar-nav">
 						<li class="nav-item active"> <a class="nav-link" href="TableroTienda.php">Home </a> 
 							</li>
-							<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">CATEGORIAS <i class='bx bx-chevron-down'></i></a>
-								<div class="dropdown-menu dropdown-large-menu">
-									<div class="row">
-										<div class="col-md-4">
-											<h6 class="large-menu-title">Fashion</h6>
-											<ul class="">
-												<li><a href="#">Casual T-Shirts</a>
-												</li>
-												<li><a href="#">Formal Shirts</a>
-												</li>
-												<li><a href="#">Jackets</a>
-												</li>
-												<li><a href="#">Jeans</a>
-												</li>
-												<li><a href="#">Dresses</a>
-												</li>
-												<li><a href="#">Sneakers</a>
-												</li>
-												<li><a href="#">Belts</a>
-												</li>
-												<li><a href="#">Sports Shoes</a>
-												</li>
-											</ul>
-										</div>
-										<!-- end col-3 -->
-										<div class="col-md-4">
-											<h6 class="large-menu-title">Electronics</h6>
-											<ul class="">
-												<li><a href="#">Mobiles</a>
-												</li>
-												<li><a href="#">Laptops</a>
-												</li>
-												<li><a href="#">Macbook</a>
-												</li>
-												<li><a href="#">Televisions</a>
-												</li>
-												<li><a href="#">Lighting</a>
-												</li>
-												<li><a href="#">Smart Watch</a>
-												</li>
-												<li><a href="#">Galaxy Phones</a>
-												</li>
-												<li><a href="#">PC Monitors</a>
-												</li>
-											</ul>
-										</div>
-										<!-- end col-3 -->
-										<div class="col-md-4">
-											<div class="pramotion-banner1">
-												<img src="paginas/assets/images/gallery/menu-img.jpg" class="img-fluid" alt="">
-											</div>
-										</div>
-										<!-- end col-3 -->
-									</div>
-									<!-- end row -->
-								</div>
+							<li class="nav-item active"> <a class="nav-link " href="Categorias.php" >CATEGORIAS </a>
+								
 								<!-- dropdown-large.// -->
 							</li>
 							<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">TIENDA  <i class='bx bx-chevron-down'></i></a>
