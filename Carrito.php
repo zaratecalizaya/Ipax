@@ -58,7 +58,7 @@ include 'tabla_temp.php';
 						</div>
 						<div class="col-12 col-md order-4 order-md-2">
 							<div class="input-group flex-nowrap px-xl-4">
-								<input type="text" class="form-control w-100" placeholder="Search for Products">
+								<input type="text" class="form-control w-100" placeholder="Search for Products" style="width: 10%;">
 								 <span class="input-group-text cursor-pointer"><i class='bx bx-search'></i></span>
 							</div>
 						</div>
@@ -74,7 +74,29 @@ include 'tabla_temp.php';
 							<div class="top-cart-icons">
 								<nav class="navbar navbar-expand">
 									<ul class="navbar-nav ms-auto">
-										<li class="nav-item"><a href="javascript:;" class="nav-link cart-link"><i class='bx bx-user'></i>Nombre de Usuario Logueado</a>
+										<li class="nav-item"><a href="javascript:;" class="nav-link cart-link"><i class='bx bx-user'></i>
+										<form action="estimacion.php" method="post">
+
+
+                                        <select class="form-control select2"  id="usuario" name="usuario" style="width: 100%;"> 
+                                           <?php
+
+                                           require_once 'Controlador/UsuarioController.php';
+
+                                               $cusuario = new ControladorUsuario();
+                                               $list=  $cusuario ->ListaruserSelect();
+
+                                               while (count($list)>0){
+                                               $User = array_shift($list);
+                                               $Did = array_shift($User);
+                                               $Dnombres = array_shift($User);
+                                               echo '<option value="'.$Did.'">'.$Dnombres.'</option>';
+                                              }
+                                                ?>
+                                           </select>
+
+
+</form></a>
 										</li>
 										
 										<li class="nav-item dropdown dropdown-large">
@@ -323,28 +345,7 @@ include 'tabla_temp.php';
 
 												<div class="d-grid">
 													
-												<form action="estimacion.php" method="post">
-
-												<label>Usuarios</label>
-                    <select class="form-control select2"  id="usuario" name="usuario" style="width: 100%;"> 
-                    <?php
-                      
-                      require_once 'Controlador/usuario.controlador.php';
-                     
-                      $cusuario = new ControladorUsuario();
-                      $list=  $cusuario -> ctrListarCargo(9);
-                    
-                      while (count($list)>0){
-                        $User = array_shift($list);
-                        $Did = array_shift($User);
-                        $Dnombres = array_shift($User);
-                        echo '<option value="'.$Did.'">'.$Dnombres.'</option>';
-                      }
-                    ?>
-                    </select>
-
-												<button type="submit"  name="btnAccion" value="proceder"></button>
-												</form>
+												
 												
 												<a href="javascript:;" class="btn btn-white btn-ecomm">Solicitar Servicios</a>
 												</div>
