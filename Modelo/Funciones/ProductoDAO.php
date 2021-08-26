@@ -37,7 +37,7 @@ class ProductoDAO {
           //$json['cliente'][]=nada;
         while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
           
-          array_push($json, array($line["id"],$line["Nombre"],$line["descripcion"],$line["imagen"],$line["Precio"],$line["categoria"]));
+          array_push($json, array($line["id"],$line["Nombre"],$line["imagen"],$line["Precio"],$line["categoria"],$line["descripcion"]));
         }
         
       }

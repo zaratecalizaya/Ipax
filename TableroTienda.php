@@ -1,3 +1,8 @@
+
+<?php 
+include 'tabla_temp.php';
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -73,41 +78,68 @@
 										</li>
 										
 										<li class="nav-item dropdown dropdown-large">
-											<a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative cart-link" data-bs-toggle="dropdown"> <span class="alert-count">8</span>
+											<a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative cart-link" data-bs-toggle="dropdown"> <span class="alert-count"><?php echo(empty($_SESSION['CARRITO']))?0:count($_SESSION['CARRITO']); ?></span>
 												<i class='bx bx-shopping-bag'></i>
 											</a>
 											<div class="dropdown-menu dropdown-menu-end">
 												<a href="javascript:;">
 													<div class="cart-header">
-														<p class="cart-header-title mb-0">CONTEO DE ITEMS ÑADIDOS A CARRITO</p>
+														<p class="cart-header-title mb-0"><?php echo(empty($_SESSION['CARRITO']))?0:count($_SESSION['CARRITO']); ?></p>
 														<p class="cart-header-clear ms-auto mb-0">VER CARRITO</p>
 													</div>
 												</a>
 												<div class="cart-list">
+													
+
+													
+													<?php if(!empty($_SESSION['CARRITO'])) {?>
+
+                                                  <?php $total=0 ; $subtotal="";  ?>
+                                                 <?php foreach($_SESSION['CARRITO'] as $indice=>$producto){?>
 													<a class="dropdown-item" href="javascript:;">
 														<div class="d-flex align-items-center">
 															<div class="flex-grow-1">
-																<h6 class="cart-product-title">Men White T-Shirt</h6>
-																<p class="cart-product-price">1 X $29.00</p>
+																<h6 class="cart-product-title"><?php echo $producto['NOMBRE']?></h6>
+																<p class="cart-product-price"><?php echo number_format($producto['CANTIDAD']);?> X $<?php echo $producto['PRECIO'];?></p>
 															</div>
 															<div class="position-relative">
-																<div class="cart-product-cancel position-absolute"><i class='bx bx-x'></i>
-																</div>
+																<div class="cart-product-cancel position-absolute">
+																    <form action="" method="post">
+														                <input type="hidden" name="id" id="id" value=<?php echo number_format($producto['ID']);?>>
+
+													                    <button type='submit' class='btn btn-light btn-ecomm' href='javascript:;' name='btnAccion' value='Eliminar'  ><i class='bx bx-x'></i> </button>
+													                    </form>		
+															</div>
 																<div class="cart-product">
-																	<img src="paginas/assets/images/products/01.png" class="" alt="product image">
+																	<img src=<?php echo $producto['IMAGEN']?> class="" alt="product image">
 																</div>
 															</div>
 														</div>
-													</a>
+														</a>
 													
+                                                    
+                                         <?php $total=$total+($producto['CANTIDAD']*$producto['PRECIO']);?>
+                                        <?php }?>
+
+   
+	
+	
+										<?php  }   else{?>
+    
+	                                         <div class="alert alert-sucess">
+												 No hay productos en el carrito..
+
+											 </div>
+											<?php }?>
+
 												</div>
 												<a href="javascript:;">
 													<div class="text-center cart-footer d-flex align-items-center">
-														<h5 class="mb-0">TOTAL DE ARTICULOS EN CARRITO</h5>
-														<h5 class="mb-0 ms-auto">$189.00</h5>
+														<h5 class="mb-0">TOTAL </h5>
+														<h5 class="mb-0 ms-auto">Bs <?php  echo number_format($total,2);?></h5>
 													</div>
 												</a>
-												<div class="d-grid p-3 border-top"> <a href="javascript:;" class="btn btn-light btn-ecomm">CHECKOUT</a>
+												<div class="d-grid p-3 border-top"> <a href="Carrito.php" class="btn btn-light btn-ecomm">VERIFICAR</a>
 												</div>
 											</div>
 										</li>
@@ -276,12 +308,14 @@
 							   while( count($list)>0){
 								$producto = array_shift($list);
                                 $pid = array_shift($producto);  
-                                $pnombre = array_shift($producto);  
-								$pdescripcion = array_shift($producto);  
+                                $pnombre = array_shift($producto);
+						
 								$pimagen = array_shift($producto);
 								$pprecio = array_shift($producto);
 								$pcategoria = array_shift($producto);
-                                 echo "
+								$pdescripcion= array_shift($producto);  
+								$cantidad=1;
+								echo "
 								 <div class='col'>
 								<div class='card rounded-0 product-card'>
 								<div class='card-header bg-transparent border-bottom-0'>
@@ -312,22 +346,20 @@
 										<div class='product-action mt-2'>
 											<div class='d-grid gap-2'>
 
-                                             
-							   <form action='' method='post'>
-							   <input type='text' name ='idproducto' id='idproducto'value='".$pid."'>
-							   <input type='text' name='nombre' id='nombre' value='".$pnombre."'>
-							   <input type='text' name='descripcion' id='descripcion' value='".$pdescripcion."'>
-							   <input type='text' name='imagen' id='imagen' value='".$pimagen."'>
-							   <input type='text' name='precio' id='precio' value='".$pprecio."'>
-							   <input type='text' name='categoria' id='categoria' value='".$pcategoria."'>
-							   <button  class='btn btn-light btn-ecomm' name='btnAccion' value='Agregar' type='submit'><i class='bx bxs-cart-add'></i>AÑADIR AL CARRITO</button>	
-								 
-								 
-								 </form>
-
-
-
-												<a href='javascript:;' class='btn btn-light btn-ecomm'>	<i class='bx bxs-cart-add'></i>AÑADIR AL CARRITO</a> <button type='button' href='javascript:;'onclick='CargaDatos(".$pid.")' class='btn btn-light btn-ecomm' data-bs-toggle='modal' data-bs-target='#modalP'><i class='bx bx-zoom-in'></i>VISTA RAPIDA</button>	
+											<form action='' method='post'>
+											<input type='hidden' name='idproducto' id='idproducto' value='".$pid."'>
+											<input type='hidden' name='nombre' id='nombre' value='".$pnombre."'>
+											<input type='hidden' name='descripcion' id='descripcion' value='".$pdescripcion."'>
+											<input type='hidden' name='imagen' id='imagen' value='".$pimagen."'>
+											
+											<input type='hidden' name='precio' id='precio' value='".$pprecio."'>
+											<input type='hidden' name='cantidad' id='cantidad' value='".$cantidad."'>
+											<input type='hidden' name='categoria' id='categoria' value='".$pcategoria."'>
+											
+											<button type='submit' class='btn btn-light btn-ecomm' href='javascript:;' name='btnAccion' value='Agregar'  ><i class='bx bxs-cart-add'></i>AÑADIR AL CARRITO</button>
+											</form>
+											
+											 <button type='button' href='javascript:;'onclick='CargaDatos(".$pid.")' class='btn btn-light btn-ecomm' data-bs-toggle='modal' data-bs-target='#modalP'><i class='bx bx-zoom-in'></i>VISTA RAPIDA</button>	
 											</div>
 										</div>
 									</div>
@@ -338,9 +370,8 @@
 
 
 							   }
-                       
 
-
+                                 
 							   if(count($list)==0){
 								   echo "aun falta rellenar datos...!";
 								 
@@ -355,7 +386,7 @@
 									<hr>
 									<nav class="d-flex justify-content-between" aria-label="Page navigation">
 										<ul class="pagination">
-											<li class="page-item"><a class="page-link" href="javascript:;"><i class='bx bx-chevron-left'></i> Anterior</a>
+											<li class="page-item"><a class="page-link" href="javascript:;"><i class='bx bx-chevron-left'></i> Prev</a>
 											</li>
 										</ul>
 										<ul class="pagination">
@@ -441,23 +472,7 @@
 						</div>
 						<div class="col">
 							<div class="footer-section3 mb-3">
-								<h6 class="mb-3 text-uppercase">ETIQUETAS POPULARES</h6>
-								<div class="tags-box"> <a href="javascript:;" class="tag-link">Cloths</a>
-									<a href="javascript:;" class="tag-link">Electronis</a>
-									<a href="javascript:;" class="tag-link">Furniture</a>
-									<a href="javascript:;" class="tag-link">Sports</a>
-									<a href="javascript:;" class="tag-link">Men Wear</a>
-									<a href="javascript:;" class="tag-link">Women Wear</a>
-									<a href="javascript:;" class="tag-link">Laptops</a>
-									<a href="javascript:;" class="tag-link">Formal Shirts</a>
-									<a href="javascript:;" class="tag-link">Topwear</a>
-									<a href="javascript:;" class="tag-link">Headphones</a>
-									<a href="javascript:;" class="tag-link">Bottom Wear</a>
-									<a href="javascript:;" class="tag-link">Bags</a>
-									<a href="javascript:;" class="tag-link">Sofa</a>
-									<a href="javascript:;" class="tag-link">Shoes</a>
-								</div>
-							</div>
+															</div>
 						</div>
 						<div class="col">
 							<div class="footer-section4 mb-3">
@@ -520,13 +535,8 @@
 									<div class="row row-cols-auto align-items-center mt-3">
 										<div class="col">
 											<label class="form-label">cantidad</label>
-											<select class="form-select form-select-sm">
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
-												<option>5</option>
-											</select>
+											
+											<input type="number" class="form-select form-select-sm">
 										</div>
 									</div>
 									<!--end row-->

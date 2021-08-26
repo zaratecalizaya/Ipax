@@ -28,7 +28,7 @@
 	<!--wrapper-->
 	<div class="wrapper">
 		<!--start top header wrapper-->
-        <div class="header-wrapper bg-dark-1">
+		<div class="header-wrapper bg-dark-1">
 			<div class="top-menu border-bottom">
 				<div class="container">
 					<nav class="navbar navbar-expand">
@@ -53,7 +53,8 @@
 						</div>
 						<div class="col-12 col-md order-4 order-md-2">
 							<div class="input-group flex-nowrap px-xl-4">
-								
+								<input type="text" class="form-control w-100" placeholder="Search for Products">
+								 <span class="input-group-text cursor-pointer"><i class='bx bx-search'></i></span>
 							</div>
 						</div>
 						<div class="col col-md-auto order-3 d-none d-xl-flex align-items-center">
@@ -68,46 +69,74 @@
 							<div class="top-cart-icons">
 								<nav class="navbar navbar-expand">
 									<ul class="navbar-nav ms-auto">
-										<li class="nav-item"><a href="javascript:;" class="nav-link cart-link"><i class='bx bx-user'></i></a>
+										<li class="nav-item"><a href="javascript:;" class="nav-link cart-link"><i class='bx bx-user'></i>Nombre de Usuario Logueado</a>
 										</li>
-										<li class="nav-item"><a href="javascript:;" class="nav-link cart-link"><i class='bx bx-heart'></i></a>
-										</li>
+										
 										<li class="nav-item dropdown dropdown-large">
-											<a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative cart-link" data-bs-toggle="dropdown"> <span class="alert-count">8</span>
+											<a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative cart-link" data-bs-toggle="dropdown"> <span class="alert-count"><?php echo(empty($_SESSION['CARRITO']))?0:count($_SESSION['CARRITO']); ?></span>
 												<i class='bx bx-shopping-bag'></i>
 											</a>
 											<div class="dropdown-menu dropdown-menu-end">
 												<a href="javascript:;">
 													<div class="cart-header">
-														<p class="cart-header-title mb-0">cONTEO DE ITEMS ÑADIDOS A CARRITO</p>
+														<p class="cart-header-title mb-0"><?php echo(empty($_SESSION['CARRITO']))?0:count($_SESSION['CARRITO']); ?></p>
 														<p class="cart-header-clear ms-auto mb-0">VER CARRITO</p>
 													</div>
 												</a>
 												<div class="cart-list">
 													<a class="dropdown-item" href="javascript:;">
+
+													
+													<?php if(!empty($_SESSION['CARRITO'])) {?>
+
+                                                  <?php $total=0 ; $subtotal="";  ?>
+                                                 <?php foreach($_SESSION['CARRITO'] as $indice=>$producto){?>
 														<div class="d-flex align-items-center">
 															<div class="flex-grow-1">
-																<h6 class="cart-product-title">Men White T-Shirt</h6>
-																<p class="cart-product-price">1 X $29.00</p>
+																<h6 class="cart-product-title"><?php echo $producto['NOMBRE']?></h6>
+																<p class="cart-product-price"><?php echo number_format($producto['CANTIDAD']);?> X $<?php echo $producto['PRECIO'];?></p>
 															</div>
 															<div class="position-relative">
-																<div class="cart-product-cancel position-absolute"><i class='bx bx-x'></i>
+																<div class="cart-product-cancel position-absolute">
+																<form action="" method="post">
+														  <input type="hidden" name="id" id="id" value=<?php echo number_format($producto['ID']);?>>
+
+													  <button type='submit' class='btn btn-light btn-ecomm' href='javascript:;' name='btnAccion' value='Eliminar'  ><i class='bx bx-x'></i> </button>
+													  </form>		
+																
+
+
 																</div>
 																<div class="cart-product">
-																	<img src="paginas/assets/images/products/01.png" class="" alt="product image">
+																	<img src=<?php echo $producto['IMAGEN']?> class="" alt="product image">
 																</div>
 															</div>
 														</div>
 													</a>
 													
+                                                    
+                                         <?php $total=$total+($producto['CANTIDAD']*$producto['PRECIO']);?>
+                                        <?php }?>
+
+   
+	
+	
+										<?php  }   else{?>
+    
+	                                         <div class="alert alert-sucess">
+												 No hay productos en el carrito..
+
+											 </div>
+											<?php }?>
+
 												</div>
 												<a href="javascript:;">
 													<div class="text-center cart-footer d-flex align-items-center">
-														<h5 class="mb-0">TOTAL DE ARTICULOS EN CARRITO</h5>
-														<h5 class="mb-0 ms-auto">$189.00</h5>
+														<h5 class="mb-0">TOTAL </h5>
+														<h5 class="mb-0 ms-auto">Bs <?php  echo number_format($total,2);?></h5>
 													</div>
 												</a>
-												<div class="d-grid p-3 border-top"> <a href="javascript:;" class="btn btn-light btn-ecomm">CHECKOUT</a>
+												<div class="d-grid p-3 border-top"> <a href="Carrito.php" class="btn btn-light btn-ecomm">VERIFICAR</a>
 												</div>
 											</div>
 										</li>

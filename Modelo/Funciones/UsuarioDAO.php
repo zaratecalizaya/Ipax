@@ -157,6 +157,35 @@ public function login($datos) { //regusu et no es
   return $mensaje;
 }
 
+
+public function listar(){
+  require_once 'modelo/Conexion/connectbd.php';
+  // connecting to database
+  $this->db = new DB_Connect();
+  $link=$this->db->connect();
+//$json=$cuenta;
+$categoria=$datos['id_categoria'];
+
+$query = "SELECT  p.id,p.Nombre,i.Nombre as imagen ,p.Precio, c.Nombre as categoria FROM  ";
+$result = mysqli_query($link,$query) or die('Consulta fallida: ' . mysqli_error($link));
+
+$json = array();
+//$json =mysqli_num_rows($result);
+if(mysqli_num_rows($result)>0){
+  //$json['cliente'][]=nada;
+while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+  
+  array_push($json, array($line["id"],$line["Nombre"],$line["imagen"],$line["Precio"],$line["categoria"]));
+}
+
+}
+
+mysqli_close($link);
+return $json;
+
+
+}
+
   
   
 }

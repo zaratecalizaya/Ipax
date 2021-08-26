@@ -84,7 +84,18 @@ class ControladorUsuario{
 }
 
 
+public function Listaruser(){
+  $tabla = "Usuarios";
+  $Usuariod = new UsuarioDAO();
+  $respuesta = $Usuariod -> listar();
+ 
+  if ($respuesta==true){
+    return "true";
+  }else{
+    return $respuesta;  
+  }
 
+}
 
 
 
