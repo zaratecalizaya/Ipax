@@ -346,8 +346,26 @@ include 'tabla_temp.php';
 												<div class="d-grid">
 													
 												
+												<form action="Estimar.php" method="post">
+                                                
+												<div class="form-control">
+													  <label for="my-input">Correo de contacto:</label>
+													  <input class="form-control" type="text" id="email" name="email" placeholder="por favor escribe tu correo" required>
+													
+
+												  </div>
+												  <small id="emailHelp" class="form-text">
+                                                     la estimacion sera verificada en este correo
+												  </small>
+											
+	                                              											
 												
-												<a href="javascript:;" class="btn btn-white btn-ecomm">Solicitar Servicios</a>
+												
+												
+												
+												<button class="btn btn-light btn-ecomm" type="submit" name="btnAccion" value="proceder">enviar estimacion</button>
+												</form>
+												
 												</div>
                                                 </div>
 											
