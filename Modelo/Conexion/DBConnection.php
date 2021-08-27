@@ -1,7 +1,7 @@
 
 <?php
 
-require_once './config.php';
+require_once 'Modelo/Conexion/config.php';
 
 class DBConnection
 {
@@ -21,7 +21,17 @@ class DBConnection
 
 		mysqli_close($link);
 
-		return $result;
+		if (gettype($result) == 'boolean') {
+			return $result;
+		}
+
+		$data = [];
+
+		while ($line = mysqli_fetch_assoc($result)) {
+			array_push($data, $line);
+		}
+
+		return $data;
 	}
 }
 
