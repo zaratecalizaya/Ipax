@@ -17,6 +17,7 @@ include 'tabla_temp.php';
 if($_POST){
 
     $total=0;
+    $SID= session_id();
     foreach($_SESSION['CARRITO'] as $indice=>$producto){
         $total=$total+($producto['PRECIO']*$producto['CANTIDAD']);
 
