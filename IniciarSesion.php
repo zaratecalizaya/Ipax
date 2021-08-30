@@ -1,3 +1,6 @@
+<?php
+require_once 'Controlador/CategoryController.php';
+?>
 <!doctype html>
 <html lang="en">
 
@@ -176,9 +179,6 @@
 									</li>
 									<li><a class="dropdown-item" href="Categorias.php">CATEGORIA DE LA TIENDA</a>
 									</li>
-
-
-
 								</ul>
 							</li>
 
@@ -253,7 +253,7 @@
 													<hr />
 												</div>
 												<div class="form-body">
-													<form class="row g-3">
+													<form class="row g-3" action="POST">
 														<div class="col-12">
 															<label for="inputEmailAddress" class="form-label">Usuario</label>
 															<input type="email" class="form-control" id="usuario" placeholder="Email Address">
@@ -302,20 +302,20 @@
 								<h6 class="mb-3 text-uppercase">Datos de contacto</h6>
 								<div class="address mb-3">
 									<p class="mb-0 text-uppercase text-white">DIRECCION</p>
-									<p class="mb-0 font-12">123 Street Name, City, Australia</p>
+									<p class="mb-0 font-12">Achachairú 2050, Santa Cruz de la Sierra</p>
 								</div>
 								<div class="phone mb-3">
-									<p class="mb-0 text-uppercase text-white">TELEFONO</p>
-									<p class="mb-0 font-13">Toll Free (123) 472-796</p>
-									<p class="mb-0 font-13">Mobile : +91-9910XXXX</p>
+									<p class="mb-0 text-uppercase text-white">TELÉFONO</p>
+									<!-- <p class="mb-0 font-13">Toll Free (123) 472-796</p> -->
+									<p class="mb-0 font-13">Mobile : +591 75828728</p>
 								</div>
 								<div class="email mb-3">
 									<p class="mb-0 text-uppercase text-white">Email</p>
-									<p class="mb-0 font-13">mail@example.com</p>
+									<p class="mb-0 font-13">ipaxstudio@gmail.com</p>
 								</div>
 								<div class="working-days mb-3">
 									<p class="mb-0 text-uppercase text-white">HORARIO DE ATENCION</p>
-									<p class="mb-0 font-13">Mon - FRI / 9:30 AM - 6:30 PM</p>
+									<p class="mb-0 font-13">Lun - Vier / 9:00 AM - 19:00 PM</p>
 								</div>
 							</div>
 						</div>
@@ -323,26 +323,13 @@
 							<div class="footer-section2 mb-3">
 								<h6 class="mb-3 text-uppercase">CATEGORIAS DE LA TIENDA</h6>
 								<ul class="list-unstyled">
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Jeans</a>
-									</li>
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> T-Shirts</a>
-									</li>
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Sports</a>
-									</li>
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Shirts & Tops</a>
-									</li>
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Clogs & Mules</a>
-									</li>
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Sunglasses</a>
-									</li>
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Bags & Wallets</a>
-									</li>
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Sneakers & Athletic</a>
-									</li>
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Electronis</a>
-									</li>
-									<li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Furniture</a>
-									</li>
+									<?php
+									$categories = CategoryController::getInstance()->get(['Nombre']);
+
+									while ($category = array_shift($categories)) {
+										echo "<li class='mb-1'><a href=''><i class='bx bx-chevron-right'></i> {$category['Nombre']}</a></li>";
+									}
+									?>
 								</ul>
 							</div>
 						</div>
@@ -394,9 +381,6 @@
 		<!--End Back To Top Button-->
 	</div>
 	<!--end wrapper-->
-	<!--start switcher-->
-
-	<!--end switcher-->
 
 	<?php include('./views/layouts/scripts.php') ?>
 	<!--Password show & hide js -->

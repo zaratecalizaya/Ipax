@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<?php include('./views/layouts') ?>
+	<?php include('./views/layouts/links.php') ?>
 	<title>eTrans - eCommerce HTML Template</title>
 </head>
 
