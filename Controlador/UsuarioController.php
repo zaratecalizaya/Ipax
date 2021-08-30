@@ -84,9 +84,14 @@ class ControladorUsuario{
 }
 
 
+public function ListaruserSelect(){
+  $tabla = "Usuarios";
+  $Usuariod = new UsuarioDAO();
+  $respuesta = $Usuariod -> listarUserSelect();
+ 
+  return $respuesta;
 
-
-
+}
 
 
 }

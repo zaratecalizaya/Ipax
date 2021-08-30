@@ -157,6 +157,38 @@ public function login($datos) { //regusu et no es
   return $mensaje;
 }
 
+
+public function listarUserSelect(){
+  require_once 'modelo/Conexion/connectbd.php';
+  // connecting to database
+  $this->db = new DB_Connect();
+  $link=$this->db->connect();
+//$json=$cuenta;
+
+
+$query = "SELECT  id,Nombre,Apellidos  FROM Usuarios ";
+$result = mysqli_query($link,$query) or die('Consulta fallida: ' . mysqli_error($link));
+
+$json = array();
+//$json =mysqli_num_rows($result);
+if(mysqli_num_rows($result)>0){
+  //$json['cliente'][]=nada;
+while ($line = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+  
+ $fullname=$line["Nombre"]." ".$line["Apellidos"];
+
+
+  array_push($json, array($line["id"],$fullname));
+}
+
+}
+
+mysqli_close($link);
+return $json;
+
+
+}
+
   
   
 }

@@ -1,3 +1,8 @@
+
+
+<?php 
+include 'tabla_temp.php';
+?>
 <!doctype html>
 <html lang="en">
 
@@ -8,7 +13,7 @@
 	<!--favicon-->
 	<link rel="icon" href="Paginas/assets/images/favicon-32x32.png" type="image/png" />
 	<!--plugins-->
-	<link href="Paginas/assets/plugins/OwlCarousel/css/owl.carousel.min.css" rel="stylesheet" />
+		<!--<link href="Paginas/assets/plugins/OwlCarousel/css/owl.carousel.min.css" rel="stylesheet" />-->
 	<link href="Paginas/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
 	<link href="Paginas/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
 	<link href="Paginas/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
@@ -53,7 +58,7 @@
 						</div>
 						<div class="col-12 col-md order-4 order-md-2">
 							<div class="input-group flex-nowrap px-xl-4">
-								<input type="text" class="form-control w-100" placeholder="Search for Products">
+								<input type="text" class="form-control w-100" placeholder="Search for Products" style="width: 10%;">
 								 <span class="input-group-text cursor-pointer"><i class='bx bx-search'></i></span>
 							</div>
 						</div>
@@ -69,46 +74,96 @@
 							<div class="top-cart-icons">
 								<nav class="navbar navbar-expand">
 									<ul class="navbar-nav ms-auto">
-										<li class="nav-item"><a href="javascript:;" class="nav-link cart-link"><i class='bx bx-user'></i></a>
+										<li class="nav-item"><a href="javascript:;" class="nav-link cart-link"><i class='bx bx-user'></i>
+										<form action="estimacion.php" method="post">
+
+
+                                        <select class="form-control select2"  id="usuario" name="usuario" style="width: 100%;"> 
+                                           <?php
+
+                                           require_once 'Controlador/UsuarioController.php';
+
+                                               $cusuario = new ControladorUsuario();
+                                               $list=  $cusuario ->ListaruserSelect();
+
+                                               while (count($list)>0){
+                                               $User = array_shift($list);
+                                               $Did = array_shift($User);
+                                               $Dnombres = array_shift($User);
+                                               echo '<option value="'.$Did.'">'.$Dnombres.'</option>';
+                                              }
+                                                ?>
+                                           </select>
+
+
+</form></a>
 										</li>
-										<li class="nav-item"><a href="javascript:;" class="nav-link cart-link"><i class='bx bx-heart'></i></a>
-										</li>
+										
 										<li class="nav-item dropdown dropdown-large">
-											<a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative cart-link" data-bs-toggle="dropdown"> <span class="alert-count">8</span>
+											<a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative cart-link" data-bs-toggle="dropdown"> <span class="alert-count"><?php echo(empty($_SESSION['CARRITO']))?0:count($_SESSION['CARRITO']); ?></span>
 												<i class='bx bx-shopping-bag'></i>
 											</a>
 											<div class="dropdown-menu dropdown-menu-end">
 												<a href="javascript:;">
 													<div class="cart-header">
-														<p class="cart-header-title mb-0">cONTEO DE ITEMS ÑADIDOS A CARRITO</p>
+														<p class="cart-header-title mb-0"><?php echo(empty($_SESSION['CARRITO']))?0:count($_SESSION['CARRITO']); ?></p>
 														<p class="cart-header-clear ms-auto mb-0">VER CARRITO</p>
 													</div>
 												</a>
 												<div class="cart-list">
 													<a class="dropdown-item" href="javascript:;">
+
+													
+													<?php if(!empty($_SESSION['CARRITO'])) {?>
+
+                                                  <?php $total=0 ; $subtotal="";  ?>
+                                                 <?php foreach($_SESSION['CARRITO'] as $indice=>$producto){?>
 														<div class="d-flex align-items-center">
 															<div class="flex-grow-1">
-																<h6 class="cart-product-title">Men White T-Shirt</h6>
-																<p class="cart-product-price">1 X $29.00</p>
+																<h6 class="cart-product-title"><?php echo $producto['NOMBRE']?></h6>
+																<p class="cart-product-price"><?php echo number_format($producto['CANTIDAD']);?> X $<?php echo $producto['PRECIO'];?></p>
 															</div>
 															<div class="position-relative">
-																<div class="cart-product-cancel position-absolute"><i class='bx bx-x'></i>
+																<div class="cart-product-cancel position-absolute">
+																<form action="" method="post">
+														  <input type="hidden" name="id" id="id" value=<?php echo number_format($producto['ID']);?>>
+
+													  <button type='submit' class='btn btn-light btn-ecomm' href='javascript:;' name='btnAccion' value='Eliminar'  ><i class='bx bx-x'></i> </button>
+													  </form>		
+																
+
+
 																</div>
 																<div class="cart-product">
-																	<img src="paginas/assets/images/products/01.png" class="" alt="product image">
+																	<img src=<?php echo $producto['IMAGEN']?> class="" alt="product image">
 																</div>
 															</div>
 														</div>
 													</a>
 													
+                                                    
+                                         <?php $total=$total+($producto['CANTIDAD']*$producto['PRECIO']);?>
+                                        <?php }?>
+
+   
+	
+	
+										<?php  }   else{?>
+    
+	                                         <div class="alert alert-sucess">
+												 No hay productos en el carrito..
+
+											 </div>
+											<?php }?>
+
 												</div>
 												<a href="javascript:;">
 													<div class="text-center cart-footer d-flex align-items-center">
-														<h5 class="mb-0">TOTAL DE ARTICULOS EN CARRITO</h5>
-														<h5 class="mb-0 ms-auto">$189.00</h5>
+														<h5 class="mb-0">TOTAL </h5>
+														<h5 class="mb-0 ms-auto">Bs <?php  echo number_format($total,2);?></h5>
 													</div>
 												</a>
-												<div class="d-grid p-3 border-top"> <a href="javascript:;" class="btn btn-light btn-ecomm">CHECKOUT</a>
+												<div class="d-grid p-3 border-top"> <a href="Carrito.php" class="btn btn-light btn-ecomm">VERIFICAR</a>
 												</div>
 											</div>
 										</li>
@@ -130,62 +185,8 @@
 						<ul class="navbar-nav">
 						<li class="nav-item active"> <a class="nav-link" href="TableroTienda.php">Home </a> 
 							</li>
-							<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">CATEGORIAS <i class='bx bx-chevron-down'></i></a>
-								<div class="dropdown-menu dropdown-large-menu">
-									<div class="row">
-										<div class="col-md-4">
-											<h6 class="large-menu-title">Fashion</h6>
-											<ul class="">
-												<li><a href="#">Casual T-Shirts</a>
-												</li>
-												<li><a href="#">Formal Shirts</a>
-												</li>
-												<li><a href="#">Jackets</a>
-												</li>
-												<li><a href="#">Jeans</a>
-												</li>
-												<li><a href="#">Dresses</a>
-												</li>
-												<li><a href="#">Sneakers</a>
-												</li>
-												<li><a href="#">Belts</a>
-												</li>
-												<li><a href="#">Sports Shoes</a>
-												</li>
-											</ul>
-										</div>
-										<!-- end col-3 -->
-										<div class="col-md-4">
-											<h6 class="large-menu-title">Electronics</h6>
-											<ul class="">
-												<li><a href="#">Mobiles</a>
-												</li>
-												<li><a href="#">Laptops</a>
-												</li>
-												<li><a href="#">Macbook</a>
-												</li>
-												<li><a href="#">Televisions</a>
-												</li>
-												<li><a href="#">Lighting</a>
-												</li>
-												<li><a href="#">Smart Watch</a>
-												</li>
-												<li><a href="#">Galaxy Phones</a>
-												</li>
-												<li><a href="#">PC Monitors</a>
-												</li>
-											</ul>
-										</div>
-										<!-- end col-3 -->
-										<div class="col-md-4">
-											<div class="pramotion-banner1">
-												<img src="paginas/assets/images/gallery/menu-img.jpg" class="img-fluid" alt="">
-											</div>
-										</div>
-										<!-- end col-3 -->
-									</div>
-									<!-- end row -->
-								</div>
+							<li class="nav-item active"> <a class="nav-link " href="Categorias.php" >CATEGORIAS </a>
+								
 								<!-- dropdown-large.// -->
 							</li>
 							<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">TIENDA  <i class='bx bx-chevron-down'></i></a>
@@ -252,158 +253,162 @@
 						<div class="shop-cart">
 							<div class="row">
 								<div class="col-12 col-xl-8">
+									
+
+                                         <?php if(!empty($_SESSION['CARRITO'])) {?>
+
+                                           <?php $total=0 ;
+										   
+										   $subtotal="";  
+										   ?>
+											<?php foreach($_SESSION['CARRITO'] as $indice=>$producto){?>
 									<div class="shop-cart-list mb-3 p-3">
 										<div class="row align-items-center g-3">
 											<div class="col-12 col-lg-6">
+
+
 												<div class="d-lg-flex align-items-center gap-2">
 													<div class="cart-img text-center text-lg-start">
-														<img src="Paginas/assets/images/products/01.png" width="130" alt="">
+														<img src=<?php echo $producto['IMAGEN']?> width="130" alt="">
 													</div>
 													<div class="cart-detail text-center text-lg-start">
-														<h6 class="mb-2">White Regular Fit Polo T-Shirt</h6>
-														<p class="mb-0">Size: <span>Regular</span>
+														<h6 class="mb-2"><?php echo $producto['NOMBRE']?></h6>
+														<p class="mb-0">Subtotal:  <?php echo number_format($producto['PRECIO']*$producto['CANTIDAD']);?><span></span>
 														</p>
-														<p class="mb-2">Color: <span>White & Blue</span>
-														</p>
-														<h5 class="mb-0">$19.00</h5>
+														<h5 class="mb-0">Bs <?php echo $producto['PRECIO'];?></h5>
 													</div>
 												</div>
+
+
+
 											</div>
 											<div class="col-12 col-lg-3">
 												<div class="cart-action text-center">
-													<input type="number" class="form-control rounded-0" value="2" min="1">
+													<input type="number" class="form-control rounded-0" value=<?php echo number_format($producto['CANTIDAD']);?> >
 												</div>
 											</div>
 											<div class="col-12 col-lg-3">
 												<div class="text-center">
-													<div class="d-flex gap-2 justify-content-center justify-content-lg-end"> <a href="javascript:;" class="btn btn-light rounded-0 btn-ecomm"><i class='bx bx-x-circle'></i> Eliminar</a>
+
+
+													<div class="d-flex gap-2 justify-content-center justify-content-lg-end"> 
+														
+				                                      <form action="" method="post">
+														  <input type="hidden" name="id" id="id" value=<?php echo number_format($producto['ID']);?>>
+
+													  <button type='submit' class='btn btn-light btn-ecomm' href='javascript:;' name='btnAccion' value='Eliminar'  ><i class='bx bx-x-circle'></i> Eliminar</button>
+													  </form>									
+												
 														<a href="javascript:;" class="btn btn-light rounded-0 btn-ecomm"><i class='bx bx-heart me-0'></i></a>
 													</div>
 												</div>
 											</div>
 										</div>
-										<div class="my-4 border-top"></div>
-										<div class="row align-items-center g-3">
-											<div class="col-12 col-lg-6">
-												<div class="d-lg-flex align-items-center gap-2">
-													<div class="cart-img text-center text-lg-start">
-														<img src="Paginas/assets/images/products/17.png" width="130" alt="">
-													</div>
-													<div class="cart-detail text-center text-lg-start">
-														<h6 class="mb-2">Fancy Red Sneakers</h6>
-														<p class="mb-0">Size: <span>Small</span>
-														</p>
-														<p class="mb-2">Color: <span>White & Red</span>
-														</p>
-														<h5 class="mb-0">$16.00</h5>
-													</div>
-												</div>
-											</div>
-											<div class="col-12 col-lg-3">
-												<div class="cart-action text-center">
-													<input type="number" class="form-control rounded-0" value="2" min="1">
-												</div>
-											</div>
-											<div class="col-12 col-lg-3">
-												<div class="text-center">
-													<div class="d-flex gap-2 justify-content-center justify-content-lg-end"> <a href="javascript:;" class="btn btn-light rounded-0 btn-ecomm"><i class='bx bx-x-circle'></i> Remove</a>
-														<a href="javascript:;" class="btn btn-light rounded-0 btn-ecomm"><i class='bx bx-heart me-0'></i></a>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="my-4 border-top"></div>
-										<div class="row align-items-center g-3">
-											<div class="col-12 col-lg-6">
-												<div class="d-lg-flex align-items-center gap-2">
-													<div class="cart-img text-center text-lg-start">
-														<img src="Paginas/assets/images/products/04.png" width="130" alt="">
-													</div>
-													<div class="cart-detail text-center text-lg-start">
-														<h6 class="mb-2">Yellow Shine Blazer</h6>
-														<p class="mb-0">Size: <span>Medium</span>
-														</p>
-														<p class="mb-2">Color: <span>Yellow & Blue</span>
-														</p>
-														<h5 class="mb-0">$22.00</h5>
-													</div>
-												</div>
-											</div>
-											<div class="col-12 col-lg-3">
-												<div class="cart-action text-center">
-													<input type="number" class="form-control rounded-0" value="2" min="1">
-												</div>
-											</div>
-											<div class="col-12 col-lg-3">
-												<div class="text-center">
-													<div class="d-flex gap-2 justify-content-center justify-content-lg-end"> <a href="javascript:;" class="btn btn-light rounded-0 btn-ecomm"><i class='bx bx-x-circle'></i> Remove</a>
-														<a href="javascript:;" class="btn btn-light rounded-0 btn-ecomm"><i class='bx bx-heart me-0'></i></a>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="my-4 border-top"></div>
-										<div class="row align-items-center g-3">
-											<div class="col-12 col-lg-6">
-												<div class="d-lg-flex align-items-center gap-2">
-													<div class="cart-img text-center text-lg-start">
-														<img src="Paginas/assets/images/products/09.png" width="130" alt="">
-													</div>
-													<div class="cart-detail text-center text-lg-start">
-														<h6 class="mb-2">Men Black Hat Cap</h6>
-														<p class="mb-0">Size: <span>Medium</span>
-														</p>
-														<p class="mb-2">Color: <span>Black</span>
-														</p>
-														<h5 class="mb-0">$14.00</h5>
-													</div>
-												</div>
-											</div>
-											<div class="col-12 col-lg-3">
-												<div class="cart-action text-center">
-													<input type="number" class="form-control rounded-0" value="1" min="1">
-												</div>
-											</div>
-											<div class="col-12 col-lg-3">
-												<div class="text-center">
-													<div class="d-flex gap-2 justify-content-center justify-content-lg-end"> <a href="javascript:;" class="btn btn-light rounded-0 btn-ecomm"><i class='bx bx-x-circle'></i> Remove</a>
-														<a href="javascript:;" class="btn btn-light rounded-0 btn-ecomm"><i class='bx bx-heart me-0'></i></a>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="my-4 border-top"></div>
-										<div class="d-lg-flex align-items-center gap-2">	<a href="javascript:;" class="btn btn-light btn-ecomm"><i class='bx bx-shopping-bag'></i> Continuar Comprando</a>
-											<a href="javascript:;" class="btn btn-light btn-ecomm ms-auto"><i class='bx bx-x-circle'></i> Vaciar Carrito</a>
+                                        <div class="my-4 border-top"></div>
+									
+									</div>
+
+                                         <?php $total=$total+($producto['CANTIDAD']*$producto['PRECIO']);?>
+                                        <?php }?>
+
+   
+	
+	
+										<?php  }   else{?>
+    
+	                                         <div class="alert alert-sucess">
+												 No hay productos en el carrito..
+
+											 </div>
+											<?php }?>
+											<div class="d-lg-flex align-items-center gap-2">	<a href="Tablerotienda.php" class="btn btn-light btn-ecomm"><i class='bx bx-shopping-bag'></i> Continuar Comprando</a>
+											
+											<button   class="btn btn-light btn-ecomm ms-auto" href='javascript:;' name='btnAccion' value='vaciar' ><i class='bx bx-x-circle'></i> Vaciar Carrito</button>
 											<a href="javascript:;" class="btn btn-white btn-ecomm"><i class='bx bx-refresh'></i> Actualizacion de la Compra</a>
 										</div>
-									</div>
 								</div>
 								<div class="col-12 col-xl-4">
 									<div class="checkout-form p-3 bg-dark-1">
 										<div class="card rounded-0 border bg-transparent shadow-none">
 											
 										</div>
+
+
 										<div class="card rounded-0 border bg-transparent mb-0 shadow-none">
 											<div class="card-body">
                                             <p class="fs-5 text-white">Estimacion de Costos</p>
-                                            <div class="my-3 border-top">
                                             
-												<p class="mb-2">Subtotal: <span class="float-end">$198.00</span>
-												</p>
-												<p class="mb-2">Shipping: <span class="float-end">--</span>
-												</p>
-												<p class="mb-2">Taxes: <span class="float-end">$14.00</span>
-												</p>
-												<p class="mb-0">Discount: <span class="float-end">--</span>
-												</p>
+                                            
 												<div class="my-3 border-top"></div>
-												<h5 class="mb-0">Order Total: <span class="float-end">212.00</span></h5>
+												<h5 class="mb-0">Order Total: <span class="float-end">Bs <?php  echo number_format($total,2);?></span></h5>
 												<div class="my-4"></div>
-												<div class="d-grid"> <a href="javascript:;" class="btn btn-white btn-ecomm">Proceed to Checkout</a>
+
+												<div class="d-grid">
+													
+												
+												<form action="" method="post">
+												<select class="form-control select2"  id="cliente" name="cliente" style="width: 100%;"> 
+                                           <?php
+
+                                           require_once 'Controlador/UsuarioController.php';
+
+                                               $cusuario = new ControladorUsuario();
+                                               $list=  $cusuario ->ListaruserSelect();
+
+                                               while (count($list)>0){
+                                               $User = array_shift($list);
+                                               $Did = array_shift($User);
+                                               $Dnombres = array_shift($User);
+                                               echo '<option value="'.$Did.'">'.$Dnombres.'</option>';
+                                              }
+                                                ?>
+                                           </select>
+
+
+												<input class="form-control" type="text" id="idventa" name="idventa" value="0">
+												<input class="form-control" type="text" id="monto" name="monto" value="<?php  echo number_format($total,2);?>" >
+													
+												  <small id="emailHelp" class="form-text">
+                                                     la estimacion sera verificada en este correo
+												  </small>
+											
+												<div class="form-control">
+													  <label for="my-input">Correo de contacto:</label>
+													  <input class="form-control" type="text" id="email" name="email" placeholder="por favor escribe tu correo" required>
+													
+
+												  </div>
+												  <small id="emailHelp" class="form-text">
+                                                     la estimacion sera verificada en este correo
+												  </small>
+											
+	                                              											
+												
+												
+											<?php
+											include_once 'Controlador/NotaventaController.php';
+											$nota= new ControladorNotaVenta();
+											$resp= $nota -> ctrRegistroNotaVenta();
+										
+										//echo "<script> alert(' respuesta: ".$resp." ')</script>";
+										if ($resp=="true"){
+										  //echo "<script> alert(' respuesta: ".$resp." ')</script>";
+										   echo "<meta http-equiv='refresh' content='0'>";
+										}elseif($resp=="false"){
+										  //echo "<script> alert(' respuesta: al parecer fue falso XD')</script>";
+										}else{  
+										  if ($resp!=""){
+										 // echo "<script> alert(' respuesta: ".$resp." ')</script>";
+										} }
+									   
+
+                                             ?>												
+												<button class="btn btn-light btn-ecomm" type="submit" name="btnAccion" value="proceder">enviar estimacion</button>
+												</form>
+												
 												</div>
                                                 </div>
-											</div>
+											
 										</div>
 									</div>
 								</div>

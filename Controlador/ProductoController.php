@@ -46,7 +46,46 @@ class ControladorProducto{
         return $respuesta;
         
        }
+
+
+       public function ctrDescripcionProduct($id){
+         
+        // $mutil = new Utils();
+        // $mutil -> console_log('la imagen no esta pasando');
+         $datos=array("id"=>$id);
+ 
+         $tabla = "Producto";
+         $Productod = new ProductoDAO();
+         $respuesta = $Productod -> MostrarDescripcion($datos);     
+         return $respuesta;
+         
+        }
+
+        public function ctrPrecioProduct($id){
+         
+          // $mutil = new Utils();
+          // $mutil -> console_log('la imagen no esta pasando');
+           $datos=array("id"=>$id);
+   
+           $tabla = "Producto";
+           $Productod = new ProductoDAO();
+           $respuesta = $Productod -> MostrarPrecio($datos);     
+           return $respuesta;
+           
+          }
   
+          public function ctrNombreProduct($id){
+         
+            // $mutil = new Utils();
+            // $mutil -> console_log('la imagen no esta pasando');
+             $datos=array("id"=>$id);
+     
+             $tabla = "Producto";
+             $Productod = new ProductoDAO();
+             $respuesta = $Productod -> MostrarNombre($datos);     
+             return $respuesta;
+             
+            }
 
 
     
