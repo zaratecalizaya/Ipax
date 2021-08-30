@@ -60,7 +60,7 @@ if(isset($_POST['btnAccion'])){
                  foreach($_SESSION['CARRITO'] as $indice=>$producto){
                     if($producto['ID']==$_POST['id']){
                       unset($_SESSION['CARRITO'][$indice]);
-                      echo "<script>alert('elemento borrado');</script>";
+                     // echo "<script>alert('elemento borrado');</script>";
 
 
                     }
@@ -69,7 +69,20 @@ if(isset($_POST['btnAccion'])){
                  }
 
                 break;
-                case "vaciar":$_SESSION.session_destroy();
+                case "vaciar":
+                    foreach($_SESSION['CARRITO'] as $indice=>$producto){
+                        $_SESSION.session_destroy();
+                       // unset($_SESSION['CARRITO'][$indice]);
+                        //  echo "<script>alert('elemento borrado');</script>";
+    
+    
+                        
+                      //  $_SESSION.session_destroy();
+    
+                     }
+    
+                    
+                   
                 break;
 
             }

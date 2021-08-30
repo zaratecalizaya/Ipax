@@ -13,7 +13,7 @@ include 'tabla_temp.php';
 	<!--favicon-->
 	<link rel="icon" href="Paginas/assets/images/favicon-32x32.png" type="image/png" />
 	<!--plugins-->
-	<link href="Paginas/assets/plugins/OwlCarousel/css/owl.carousel.min.css" rel="stylesheet" />
+		<!--<link href="Paginas/assets/plugins/OwlCarousel/css/owl.carousel.min.css" rel="stylesheet" />-->
 	<link href="Paginas/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
 	<link href="Paginas/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
 	<link href="Paginas/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
@@ -346,8 +346,32 @@ include 'tabla_temp.php';
 												<div class="d-grid">
 													
 												
-												<form action="Estimar.php" method="post">
-                                                
+												<form action="" method="post">
+												<select class="form-control select2"  id="cliente" name="cliente" style="width: 100%;"> 
+                                           <?php
+
+                                           require_once 'Controlador/UsuarioController.php';
+
+                                               $cusuario = new ControladorUsuario();
+                                               $list=  $cusuario ->ListaruserSelect();
+
+                                               while (count($list)>0){
+                                               $User = array_shift($list);
+                                               $Did = array_shift($User);
+                                               $Dnombres = array_shift($User);
+                                               echo '<option value="'.$Did.'">'.$Dnombres.'</option>';
+                                              }
+                                                ?>
+                                           </select>
+
+
+												<input class="form-control" type="text" id="idventa" name="idventa" value="0">
+												<input class="form-control" type="text" id="monto" name="monto" value="<?php  echo number_format($total,2);?>" >
+													
+												  <small id="emailHelp" class="form-text">
+                                                     la estimacion sera verificada en este correo
+												  </small>
+											
 												<div class="form-control">
 													  <label for="my-input">Correo de contacto:</label>
 													  <input class="form-control" type="text" id="email" name="email" placeholder="por favor escribe tu correo" required>
@@ -361,8 +385,24 @@ include 'tabla_temp.php';
 	                                              											
 												
 												
-												
-												
+											<?php
+											include_once 'Controlador/NotaventaController.php';
+											$nota= new ControladorNotaVenta();
+											$resp= $nota -> ctrRegistroNotaVenta();
+										
+										//echo "<script> alert(' respuesta: ".$resp." ')</script>";
+										if ($resp=="true"){
+										  //echo "<script> alert(' respuesta: ".$resp." ')</script>";
+										   echo "<meta http-equiv='refresh' content='0'>";
+										}elseif($resp=="false"){
+										  //echo "<script> alert(' respuesta: al parecer fue falso XD')</script>";
+										}else{  
+										  if ($resp!=""){
+										 // echo "<script> alert(' respuesta: ".$resp." ')</script>";
+										} }
+									   
+
+                                             ?>												
 												<button class="btn btn-light btn-ecomm" type="submit" name="btnAccion" value="proceder">enviar estimacion</button>
 												</form>
 												
