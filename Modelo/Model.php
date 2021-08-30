@@ -1,7 +1,7 @@
 
 <?php
 
-require_once './Conexion/DBConnection.php';
+require_once 'Modelo/Conexion/DBConnection.php';
 
 abstract class Model
 {
@@ -14,7 +14,7 @@ abstract class Model
 		$this->COLUMNS = $COLUMNS;
 	}
 
-	function create($args)
+	public function create($args)
 	{
 		$cols = "";
 		$values	= "";
@@ -47,7 +47,7 @@ abstract class Model
 		return DBConnection::query($query);
 	}
 
-	function update($id, $args)
+	public function update($id, $args)
 	{
 		$values = "";
 
@@ -77,16 +77,32 @@ abstract class Model
 		return DBConnection::query($sql);
 	}
 
-	function delete($id)
+	public function delete($id)
 	{
 		$sql = "DELETE FROM {$this->TABLE} WHERE id = $id";
 
 		return DBConnection::query($sql);
 	}
 
-	function select($id = null)
+	public function select($id = null, $columns = [])
 	{
-		$sql = "SELECT * FROM {$this->TABLE}";
+		$cols = "";
+
+		$length = count($columns);
+		
+		if ($length > 0) {
+			for ($i = 0; $i < $length; $i++) {
+				$cols .= "{$columns[$i]}";
+				if ($i < $length - 1) {
+					$cols .= ", ";
+				}
+			}
+		} else {
+			$cols = "*";
+		}
+
+		$sql = "SELECT $cols FROM {$this->TABLE}";
+
 		if ($id != null) {
 			$sql .= " WHERE id = $id";
 		}
@@ -94,7 +110,7 @@ abstract class Model
 		return DBConnection::query($sql);
 	}
 
-	function query($sql)
+	public function query($sql)
 	{
 		return DBConnection::query($sql);
 	}
