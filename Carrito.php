@@ -346,6 +346,9 @@ include 'tabla_temp.php';
 												<div class="d-grid">
 													
 												
+
+
+
 												<form action="" method="post">
 												<select class="form-control select2"  id="cliente" name="cliente" style="width: 100%;"> 
                                            <?php
@@ -366,7 +369,7 @@ include 'tabla_temp.php';
 
 
 												<input class="form-control" type="text" id="idventa" name="idventa" value="0">
-												<input class="form-control" type="text" id="monto" name="monto" value="<?php  echo number_format($total,2);?>" >
+												<input class="form-control" type="number" id="monto" name="monto" value="<?php  echo $total;?>" >
 													
 												  <small id="emailHelp" class="form-text">
                                                      la estimacion sera verificada en este correo
@@ -378,10 +381,6 @@ include 'tabla_temp.php';
 													
 
 												  </div>
-												  <small id="emailHelp" class="form-text">
-                                                     la estimacion sera verificada en este correo
-												  </small>
-											
 	                                              											
 												
 												
@@ -393,7 +392,7 @@ include 'tabla_temp.php';
 										//echo "<script> alert(' respuesta: ".$resp." ')</script>";
 										if ($resp=="true"){
 										  //echo "<script> alert(' respuesta: ".$resp." ')</script>";
-										   echo "<meta http-equiv='refresh' content='0'>";
+										//   echo "<meta http-equiv='refresh' content='0'>";
 										}elseif($resp=="false"){
 										  //echo "<script> alert(' respuesta: al parecer fue falso XD')</script>";
 										}else{  
@@ -405,6 +404,17 @@ include 'tabla_temp.php';
                                              ?>												
 												<button class="btn btn-light btn-ecomm" type="submit" name="btnAccion" value="proceder">enviar estimacion</button>
 												</form>
+												
+
+
+
+
+
+
+
+
+
+
 												
 												</div>
                                                 </div>

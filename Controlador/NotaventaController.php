@@ -17,11 +17,12 @@ class ControladorNotaVenta{
       
        $mutil = new Utils();
         
-      
+       $mutil -> console_log("recibiendo");
        
-         if(isset($_POST["id"])){
+         if(isset($_POST["idventa"])){
+            $mutil -> console_log("recibiendo");
         
-            if(($_POST["id"])==0){
+            if(($_POST["idventa"])==0){
              
               $monto=$_POST["monto"];
               $cliente=$_POST["cliente"];

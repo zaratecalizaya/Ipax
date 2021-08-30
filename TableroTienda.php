@@ -594,7 +594,7 @@ include 'tabla_temp.php';
        
 	   function obtenerPrecio(idp){
       var parametros = {
-                "id" : idp,
+                "id" : idp
               
         };
 		//document.getElementById("myImage").src="ImagenP/modelorealidadaumentada2.png";
@@ -608,8 +608,9 @@ include 'tabla_temp.php';
 		  //document.getElementsByTagName(myImage).src=respuesta;
 		  document.getElementById("hPrecio").innerHTML ="Bs"+respuesta;  
 			 //$("#myImage").attr("src",respuesta);
-
-        }
+           
+        },
+		
        });  
 	   }
          
