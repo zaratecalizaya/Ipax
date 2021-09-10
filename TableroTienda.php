@@ -7,25 +7,10 @@ include 'tabla_temp.php';
 <html lang="en">
 
 <head>
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!--favicon-->
-	<link rel="icon" href="paginas/assets/images/favicon-32x32.png" type="image/png" />
-	<!--plugins-->
-	<link href="paginas/assets/plugins/OwlCarousel/css/owl.carousel.min.css" rel="stylesheet" />
-	<link href="paginas/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
-	<link href="paginas/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
-	<link href="paginas/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
-	<link href="paginas/assets/plugins/nouislider/nouislider.min.css" rel="stylesheet" />
-	<!-- loader-->
-	<link href="paginas/assets/css/pace.min.css" rel="stylesheet" />
-	<script src="paginas/assets/js/pace.min.js"></script>
-	<!-- Bootstrap CSS -->
-	<link href="paginas/assets/css/bootstrap.min.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-	<link href="paginas/assets/css/app.css" rel="stylesheet">
-	<link href="paginas/assets/css/icons.css" rel="stylesheet">
+	
+<?php 
+include 'cabecera.php';
+?>
 	<title>TableroTienda</title>
 </head>
 
@@ -503,7 +488,9 @@ include 'tabla_temp.php';
 		<div class="modal fade" id="modalP">
 			<div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-xl-down">
 				<div class="modal-content bg-dark-4 rounded-0 border-0">
-					<div class="modal-body">
+				
+				<form action="" method="post">
+				<div class="modal-body">
 						<button type="button" class="btn-close float-end" data-bs-dismiss="modal"></button>
 						<div class="row g-0">
 							<div class="col-12 col-lg-6">
@@ -548,6 +535,7 @@ include 'tabla_temp.php';
 						</div>
 						<!--end row-->
 					</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -666,20 +654,10 @@ include 'tabla_temp.php';
 
 	</script>
 	
-	<!--end switcher-->
-	<!-- Bootstrap JS -->
-	<script src="paginas/assets/js/bootstrap.bundle.min.js"></script>
-	<!--plugins-->
-	<script src="paginas/assets/js/jquery.min.js"></script>
-	<script src="paginas/assets/plugins/simplebar/js/simplebar.min.js"></script>
-	<script src="paginas/assets/plugins/OwlCarousel/js/owl.carousel.min.js"></script>
-	<script src="paginas/assets/plugins/OwlCarousel/js/owl.carousel2.thumbs.min.js"></script>
-	<script src="paginas/assets/plugins/metismenu/js/metisMenu.min.js"></script>
-	<script src="paginas/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-	<script src="paginas/assets/plugins/nouislider/nouislider.min.js"></script>
-	<script src="paginas/assets/js/product-gallery.js"></script>
-	<!--app JS-->
-	<script src="paginas/assets/js/app.js"></script>
+	
+<?php 
+include 'scriptpie.php';
+?>
 </body>
 
 </html>

@@ -44,7 +44,7 @@ class NotaVentaDAO {
               
             }
            
-           
+            session_destroy();
 
 
 

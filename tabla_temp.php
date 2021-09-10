@@ -70,8 +70,11 @@ if(isset($_POST['btnAccion'])){
 
                 break;
                 case "vaciar":
-                    foreach($_SESSION['CARRITO'] as $indice=>$producto){
-                        $_SESSION.session_destroy();
+                   // echo '<script type="text/JavaScript"> location.reload(); </script>';
+                    $_SESSION.session_destroy();
+                    echo "<meta http-equiv='refresh' content='0'>";
+                    /*// foreach($_SESSION['CARRITO'] as $indice=>$producto){
+                      session_destroy();
                        // unset($_SESSION['CARRITO'][$indice]);
                         //  echo "<script>alert('elemento borrado');</script>";
     
@@ -79,7 +82,7 @@ if(isset($_POST['btnAccion'])){
                         
                       //  $_SESSION.session_destroy();
     
-                     }
+                     }*/
     
                     
                    

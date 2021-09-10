@@ -5,7 +5,7 @@
   require_once 'modelo/utilitario.php';
 
 
-class ControladorCategoria{
+class ControladorCategoria {
   
     /* ==============================
      Registro de Categoria     

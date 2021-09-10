@@ -1,5 +1,5 @@
 <?php
-
+ include 'tabla_temp.php';
   
 require_once 'modelo/utilitario.php';
 require_once 'modelo/Funciones/CategoriaDAO.php';
@@ -41,6 +41,7 @@ class ControladorNotaVenta{
         
         
               if ($respuesta==true){
+                
                 return "true";
               }else{
                 return $respuesta;  
